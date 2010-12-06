@@ -10,7 +10,7 @@
 <script language="javascript" src="js/mainmenu.js"></script>
 </head>
 <body>
-<div><font color="red">${userid}</font>登陆成功</div>
+<div><font color="red">${userid}</font>登陆</div>
 <div id="mainmenu">
 	<table cellpadding="0" cellspacing="0" bgcolor="#e7eef8" width="350" height="250">
 		<tr>
@@ -29,7 +29,7 @@
 			<td align="center"><a href="adduser.jsp">添加工作人员</a></td>
 		</tr>
 		<tr>
-			<td align="center"><a href="#">查看销售人员汇总</a></td>
+			<td align="center"><a href="Lookpersonsubmit.jsp">查看销售人员汇总</a></td>
 		</tr>
 	</table>
 </div>

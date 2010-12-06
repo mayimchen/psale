@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$("#inuseriderror").hide();
 	$("#unuseridexit").hide();
 	$("#submitmessage").hide();
-	//防止传统事件模式的弊端。注册多个事件汇报 迭代太多
+	//防止传统事件模式的弊端。注册多个事件会报 迭代太多
 	$("#inuserid").blur(function(){
 			var s=$(this)[0];
 		if(checkuserid(s)){

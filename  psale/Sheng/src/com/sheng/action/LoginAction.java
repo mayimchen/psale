@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import javax.servlet.ServletContext;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.util.Jdbcutil;
@@ -43,7 +41,6 @@ public class LoginAction extends ActionSupport {
 		ResultSet rs=st.executeQuery("select * from user where userid='"+userid+"'and passwd='"+passwd+"'");
 		if(rs!=null){
 			if(rs.next()){
-				//ServletContext.getServletContext.
 				ActionContext.getContext().getSession().put("username", userid);
 				forward="success";
 			}else{

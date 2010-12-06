@@ -76,6 +76,12 @@
     	<result name="success">showalloutwuliao.jsp</result>
     	<result name="input">mainmenu.jsp</result>	
     	</action>
+    	
+    	<action name="lookpersonaction" class="com.sheng.action.LookpersonAction">
+    	<result name="success">lookpersonok.jsp</result>
+    	<result name="nomessage">Lookpersonsubmit.jsp</result>
+    	<result name="input">Lookpersonsubmit.jsp</result>	
+    	</action>
     </package>
    <!-- Add packages here -->
 </struts>
