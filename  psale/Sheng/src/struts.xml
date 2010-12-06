@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 此处为了ajax应用设置的action -->
+    <package name="sheng" namespace="/" extends="json-default">
+        <action name="Checkuseraction" class="com.sheng.action.CheckuserAction">
+        	<result type="json"></result>
+        </action>
+        
+        <action name="Checkaduseraction" class="com.sheng.action.Chadwuser">
+        	<result type="json"></result>
+        </action>
+        
+         <action name="Checkoutnameaction" class="com.sheng.action.CheckoutnameAction">
+        	<result type="json"></result>
+        </action>
+    </package>
+    <!-- 增加新用户的action -->
+    <package name="Register" namespace="/" extends="struts-default">
+    	<interceptors>
+    		<interceptor name="checklogin" class="com.sheng.interceptor.LoginInterceptor"></interceptor>
+    		<interceptor-stack name="mydefault">
+    		<interceptor-ref name="defaultStack"></interceptor-ref>
+    		<interceptor-ref name="checklogin"></interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+    	<global-results>
+    		<result name="login">tip.jsp</result>
+    	</global-results>
+    	<action name="adduseraction" class="com.sheng.action.AdduserAction">
+    	<result name="success">addsuccess.jsp</result>
+    	<result name="input">adduser.jsp</result>
+    	</action>
+    </package>
+    <!-- 登陆时用于控制的action -->
+  	<package name="Login" namespace="/" extends="struts-default">
+    	<action name="loginaction" class="com.sheng.action.LoginAction">
+    	<result name="success">mainmenu.jsp</result>
+    	<result name="input">index.jsp</result>
+    	</action>
+    </package>
+    <!-- 添加物料   查看物料   删除物料  查看销售action  -->
+    <package name="Addwuliao" namespace="/" extends="struts-default">
+    <!--权限检查  -->
+    	<interceptors>
+    		<interceptor name="checklogin" class="com.sheng.interceptor.LoginInterceptor"></interceptor>
+    		<interceptor-stack name="mydefault">
+    		<interceptor-ref name="defaultStack"></interceptor-ref>
+    		<interceptor-ref name="checklogin"></interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+    	<global-results>
+    		<result name="login">tip.jsp</result>
+    	</global-results>
+    	<action name="addwuliaoaction" class="com.sheng.action.AddwuliaoAction">
+    	<result name="success">addwuliaook.jsp</result>
+    	<result name="input">addwuliao.jsp</result>	
+    	</action>
+    	
+    	<action name="lookwuliaoaction" class="com.sheng.action.LookkucunAction">
+    	<result name="success">showallwuliao.jsp</result>
+    	<result name="input">mainmenu.jsp</result>	
+    	</action>
+    	
+    	<action name="delwuliaoaction" class="com.sheng.action.DelwuliaoAction">
+    	<result name="success">delwuliaook.jsp</result>
+    	<result name="input">delwuliao.jsp</result>	
+    	</action>
+    	
+    	<action name="lookoutaction" class="com.sheng.action.LookoutAction">
+    	<result name="success">showalloutwuliao.jsp</result>
+    	<result name="input">mainmenu.jsp</result>	
+    	</action>
+    </package>
+   <!-- Add packages here -->
+</struts>

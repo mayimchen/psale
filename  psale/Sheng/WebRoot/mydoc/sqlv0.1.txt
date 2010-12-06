@@ -1,0 +1,31 @@
+user:
+	 CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` varchar(8) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `passwd` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gb2312 
+
+addwuliao:
+	 CREATE TABLE `addwuliao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `inname` varchar(60) NOT NULL,
+  `innum` varchar(10) NOT NULL,
+  `inprice` varchar(10) NOT NULL,
+  `inuserid` varchar(20) NOT NULL,
+  `indate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=gb2312 
+
+delwuliao:
+	CREATE TABLE `delwuliao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `outname` varchar(60) NOT NULL,
+  `outnum` varchar(20) NOT NULL,
+  `outprice` varchar(20) NOT NULL,
+  `outuserid` varchar(20) NOT NULL,
+  `outdate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=gb2312 
+	

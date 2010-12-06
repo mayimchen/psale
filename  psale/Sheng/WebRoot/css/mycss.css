@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* CSS Document */
+#login {
+	position:absolute;
+	width:437px;
+	height:272px;
+	z-index:1;
+	left: 385px;
+	top: 153px;
+	border:1px solid #c3d9ff;
+}
+#adduser {
+	position:absolute;
+	left:400px;
+	top:100px;
+	z-index:2;
+	width:501px;
+	height:300px;
+	background-repeat:no-repeat;
+	border:1px solid #c3d9ff;
+}
+#apDiv2 {
+	position:absolute;
+	left:428px;
+	top:223px;
+	width:382px;
+	height:165px;
+	z-index:3;
+	border:0px solid #c3d9ff;
+}
+.STYLE3 {
+	color: #FF0000;
+	font-size: 18px;
+}
+.username{
+	border: 1px solid red;
+	background-image: url(../img/login.gif);
+	background-repeat: repeat-x;
+	background-position:bottom;
+}
+#adduser table{
+	width:500px;
+	height:300px;	
+	border:1 solid #c3d9ff;
+	align:center;
+}
+#showdiv{
+	left:600px;
+	width:auto;
+	height:auto;
+}
+a:link {
+	text-decoration: none;
+	color: #FF0000;
+}
+a:visited {
+	text-decoration: none;
+	color: #0000FF;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+	color: #FFFF00;
+}
+#mainmenu{
+	width:400px;
+	height:400px;	
+	position:absolute;
+}
+hr{
+border:1px  dashed red;
+}
+

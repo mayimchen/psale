@@ -1,0 +1,53 @@
+#useriderror{
+	position:absolute;
+}
+#passwderror{
+	position:absolute;
+}
+#innameerror{
+	position:absolute;
+}
+#innumerror{
+	position:absolute;
+}
+#inpriceerror{
+	position:absolute;
+}
+#inuseriderror{
+	position:absolute;
+}
+#unuseridexit{
+	position:absolute;
+}
+#outnameerror{
+	position:absolute;
+}
+#outnumerror{
+	position:absolute;
+}
+#outpriceerror{
+	position:absolute;
+}
+#outuseriderror{
+	position:absolute;
+}
+#outnamemessage{
+	position:absolute;
+}
+#outuseridmessage{
+	position:absolute;
+}
+#usermessage{
+	position:absolute;
+}
+#usernameerror{
+	position:absolute;
+}
+#submitmessage{
+	left:400px;
+	top:10px;
+	width:400px;
+	height:30px;
+	background-color:red;
+	position:absolute;
+}

@@ -1,0 +1,2 @@
+select * into outfile 'c:\\test.sql' from tbl_android_ad;
+Load Data InFile 'c:/test.sql' REPLACE Into Table `tbl_android_ad`;
