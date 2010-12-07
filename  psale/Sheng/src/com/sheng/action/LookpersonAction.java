@@ -18,6 +18,12 @@ public class LookpersonAction extends ActionSupport {
 	private Timestamp startdate;
 	private Timestamp enddate;
 	private List<Outwuliao> ls;
+	public List<Outwuliao> getLs() {
+		return ls;
+	}
+	public void setLs(List<Outwuliao> ls) {
+		this.ls = ls;
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -57,7 +63,7 @@ public class LookpersonAction extends ActionSupport {
 					ow.setOutnum(rs.getString("outnum"));
 					ow.setOutprice(rs.getString("outprice"));
 					ow.setOutuserid(rs.getString("outuserid"));
-					ow.setOutdate(rs.getString("outdate").substring(0,19));
+					ow.setOutdate(rs.getString("outdate").substring(0, 19));
 					ls.add(ow);
 					forward="success";
 				}

@@ -8,6 +8,5 @@ $(document).ready(function(){
 	});
 	$("tr").mouseout(function(){
 			$(this).css("background",yanse);
-		
 	});
 });

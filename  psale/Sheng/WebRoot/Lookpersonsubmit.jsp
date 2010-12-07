@@ -12,8 +12,10 @@
 		<script language="javascript" src="js/personsubmit.js"></script>
 	</head>
 	<body>
+	<h3 align="center">查看销售汇总</h3>
+	<hr/>
 		<div align="center">
-		<form onsubmit="return checksubmit();" >
+		<form onsubmit="return checksubmit();" action="lookpersonaction.action">
 			<table cellpadding="0" cellspacing="0" border="1 solid #e7eef8" bordercolor="#e7eef8" width="400" height="200">
 				<tr>
 					<td class="STYLE3">
@@ -37,6 +39,7 @@
 					</td>
 					<td>
 						<input type="text" name="enddate" id="enddate"  onclick="showcalendar(event, this)"/>
+						<span id="errordate"></span>
 					</td>
 				</tr>
 				<tr>
@@ -49,7 +52,6 @@
 			</table>
 		</form>
 		</div>
-		<hr/>
 		<div id="submitmessage">
 			请仔细检查你的输入和提示信息
 		</div>
