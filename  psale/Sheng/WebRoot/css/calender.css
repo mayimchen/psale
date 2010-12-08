@@ -1,0 +1,57 @@
+/* CSS Document */
+#dialog {
+	position:absolute;
+	left:107px;
+	top:28px;
+	width:298px;
+	height:189px;
+	z-index:1;
+	background-color: #CCCCCC;
+	border-top-color: #00FF00;
+	border-right-color: #00FF00;
+	border-bottom-color: #00FF00;
+	border-left-color: #00FF00;
+}
+.STYLE1 {
+	color: #FF0000;
+	font-family: "¿¬Ìå_GB2312";
+	font-size: 24px;
+}
+a:link {
+	text-decoration: none;
+	color: #FF0000;
+}
+a:visited {
+	text-decoration: none;
+	color: #0000FF;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+	color: #FFFF00;
+}
+#movemessage{
+	width:150px;
+	height:100px;
+	border:1px solid #c3d9ff;
+	font-size:12px;
+	background-color:white;
+	position:absolute;
+}
+#movemessage2{
+ background:#e7eef8;
+}
+body,td,.p1,.p2,.i{
+	font-family:arial;
+	border:thin;
+}
+table{ border:0; bgcolor:#e7eef8}
+td{FONT-SIZE:9pt;LINE-HEIGHT:18px; border:thin}
+th{ border:thin}
+tr{ background-color::#e7eef8}
+.STYLE2 {color: #FFFF00}
+#top{background:#e7eef8}
+#mainmenu2{width:350px;border:1px solid #c3d9ff;font-size:12px;margin:8px 0 0 15px}
+#w2{ background-color:#e7eef8; width:520px}

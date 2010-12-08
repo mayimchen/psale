@@ -63,5 +63,6 @@
 			</div>
 			<div id="bkimg" class="tip-arrow-bottom"></div>
 		</div>
+	<a href="index2.jsp">≤‚ ‘</a>
 	</body>
 </html>

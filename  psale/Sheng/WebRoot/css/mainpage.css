@@ -1,0 +1,89 @@
+/* CSS Document */
+#mainmenu{
+	border-color: #c3d9ff #c3d9ff #c3d9ff;
+	border-style: solid solid none;
+	border-width: 1px 1px 0;
+    bottom: 0px;
+	font-family: "simsun";
+	font-size: 12px;
+	height: 35px;
+	position: fixed;
+	right: 0px;
+	z-index: 90000;
+	background:url(../img/toolbar_bg.png);
+	background-repeat-x: repeat;
+	height:35px;
+	width: 100%;	
+}
+#login{
+	left:10px;
+	position:relative;
+	width:30px;
+}
+#close{
+	overflow:hidden;
+	visibility: visible;
+	position:relative;
+	float:right;
+	right:5px;
+	top:-10px;
+	width:30px;
+}
+#copyright{
+	position:relative;
+	left:600px;
+	top:-30px;
+	width:250px;
+	}
+#menu{
+	position:absolute;
+	width:100px;
+	border:1px solid #c3d9ff;
+	background-color:#ffffff;
+}
+#tip{
+	position:relative;
+	left:100px;
+	top:-14px;
+	width:80px;
+}
+#rlogin{
+	position:absolute;
+	width:300px;
+	height:200px;
+	z-index:102;
+	background-color:#ffffff;
+}
+#zhezhao {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	filter: alpha(opacity=50);
+	opacity: 0.5;
+	z-index:100;
+	display:none;
+	background-color: #999999;
+}
+.tts{
+	left:0px;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+body{
+	background-image:url(../img/chrome-bird.jpg);
+	background-position:480px 160px;
+	background-repeat: no-repeat;
+}
