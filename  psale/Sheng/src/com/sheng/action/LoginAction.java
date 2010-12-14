@@ -1,12 +1,9 @@
 package com.sheng.action;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sheng.util.Jdbcutil;
+import com.sheng.dao.DAO;
+import com.sheng.dao.DaoImpl;
 
 public class LoginAction extends ActionSupport {
 
@@ -35,17 +32,13 @@ public class LoginAction extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		String forward="";
-		Jdbcutil jdbc=new Jdbcutil();
-		Connection conn=jdbc.getConnection();
-		Statement st=conn.createStatement();
-		ResultSet rs=st.executeQuery("select * from user where userid='"+userid+"'and passwd='"+passwd+"'");
-		if(rs!=null){
-			if(rs.next()){
-				ActionContext.getContext().getSession().put("username", userid);
-				forward="success";
-			}else{
-				forward="input";
-			}
+		DAO dao=new DaoImpl();
+		if(dao.getuser(userid, passwd)){
+			ActionContext.getContext().getSession().put("username", userid);
+			forward="success";
+		}
+		else{
+			forward="input";
 		}
 		return forward;
 	}

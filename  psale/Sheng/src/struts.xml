@@ -17,11 +17,11 @@
         
          <action name="Checkoutnameaction" class="com.sheng.action.CheckoutnameAction">
         	<result type="json"></result>
-        </action>
+        </action><!--
          <action name="white">
         	<result>index2.jsp</result>
         </action>
-    </package>
+    --></package>
     <!-- 增加新用户的action -->
     <package name="Register" namespace="/" extends="struts-default">
     	<interceptors>

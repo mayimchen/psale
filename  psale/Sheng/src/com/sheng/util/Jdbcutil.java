@@ -15,10 +15,11 @@ public class Jdbcutil {
 	
 	public  Connection getConnection() throws ClassNotFoundException{
 		Connection conn = null;
+		Jdbcpro jdbcpro=ConnfigReader.getInstance().getJdbcpro();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(jdbcpro.getDrivername());
 			System.out.println("the driver had load.....");
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/sheng", "root", "");
+			conn=DriverManager.getConnection(jdbcpro.getUrl(), jdbcpro.getUsername(),jdbcpro.getPasswd());
 			//System.out.println("the conn had been created");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
