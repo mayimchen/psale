@@ -1,8 +1,10 @@
 // JavaScript Document
+var a=0,b=0;
 // 检查登陆时的输入
 $(function(){
 		   $("#useriderror").hide();
 		   $("#passwderror").hide();
+		   $("#submitmessage").hide();
 		   })
 //检查id是否合法
 function checkuserid(t){
@@ -12,6 +14,7 @@ function checkuserid(t){
 	if(rs.test(userid)){
 		$("#useriderror").hide();
 		$("#userid").removeClass("username");
+		a=1;
 		return true;
 		}
 		else{
@@ -40,14 +43,16 @@ function checkpasswd(t){
 	else{
 		$("#passwderror").hide();
 		$("#passwd").removeClass("username");
+		b=1;
 		return true;
 	}	
 }
 //提交表單操作
 function tijiao(){
-	if(checkuserid()){
+	if(a==1&&b==1){
 		return true;
 	}else{
+		$("#submitmessage").show().delay(1000).fadeOut(2000);
 		return false;
 	}
 }

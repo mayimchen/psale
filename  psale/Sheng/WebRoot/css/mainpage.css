@@ -37,7 +37,7 @@
 	}
 #menu{
 	position:absolute;
-	width:100px;
+	width:200px;
 	border:1px solid #c3d9ff;
 	background-color:#ffffff;
 }
@@ -49,7 +49,7 @@
 }
 #rlogin{
 	position:absolute;
-	width:300px;
+	width:380px;
 	height:200px;
 	z-index:102;
 	background-color:#ffffff;

@@ -18,7 +18,7 @@
 		<hr />
 		<div id="login"></div>
 		<div id="apDiv2">
-			<form action="loginaction.action" onSubmit="tijiao()">
+			<form action="loginaction.action" onSubmit="return tijiao();">
 				<table width="380" height="147" cellpadding="0" cellspacing="0"
 					border="0" bgcolor="#e7eef8">
 					<tr>
@@ -63,6 +63,8 @@
 			</div>
 			<div id="bkimg" class="tip-arrow-bottom"></div>
 		</div>
-	<a href="index2.jsp">测试</a>
+		<div id="submitmessage">
+			请仔细检查你的输入和提示信息
+		</div>
 	</body>
 </html>
