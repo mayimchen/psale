@@ -1,11 +1,8 @@
 package com.sheng.action;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import com.opensymphony.xwork2.ActionSupport;
-import com.sheng.util.Jdbcutil;
+import com.sheng.dao.CheckuserexistDAO;
+import com.sheng.dao.CheckuserexistDaoImpl;
 
 public class CheckuserAction extends ActionSupport {
 
@@ -30,25 +27,13 @@ public class CheckuserAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
-		Connection conn=jdbc.getConnection();
-		Statement st=conn.createStatement();
-		ResultSet rs=st.executeQuery("select * from user where userid="+userid);
-		if(rs!=null){
-			if(rs.next()){
-				showmessage=1;
-				jdbc.close(rs);
-				jdbc.close(st);
-				jdbc.close(conn);
-			}
-			else{
-				showmessage=0;
-				jdbc.close(rs);
-				jdbc.close(st);
-				jdbc.close(conn);
-			}
+		CheckuserexistDAO dao=new CheckuserexistDaoImpl();
+		if(dao.checkuseridexist(userid)){
+			showmessage=1;
+		}
+		else{
+			showmessage=0;
 		}
 		return SUCCESS;
-	}
-	
+	}	
 }

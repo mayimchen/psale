@@ -3,9 +3,11 @@ package com.sheng.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 
 /*
  * the class is a util class
@@ -68,6 +70,18 @@ public class Jdbcutil {
 			}
 		}
 	}
-		
+	/*
+	 * the method will close the preparestatement
+	 * **/
+	public void close(PreparedStatement pm){
+		if(pm!=null){
+			try {
+				pm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("we can't close the PreparedStatement");
+			}
+		}
+	}
 	}
 

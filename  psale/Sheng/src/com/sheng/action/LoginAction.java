@@ -2,8 +2,8 @@ package com.sheng.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sheng.dao.DAO;
-import com.sheng.dao.DaoImpl;
+import com.sheng.dao.CheckuserexistDAO;
+import com.sheng.dao.CheckuserexistDaoImpl;
 
 public class LoginAction extends ActionSupport {
 
@@ -11,6 +11,7 @@ public class LoginAction extends ActionSupport {
 	 * µÇÂ½action
 	 */
 	private static final long serialVersionUID = 1L;
+	CheckuserexistDAO dao=new CheckuserexistDaoImpl();
 	private String userid;
 	private String passwd;
 	public String getUserid() {
@@ -32,7 +33,6 @@ public class LoginAction extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		String forward="";
-		DAO dao=new DaoImpl();
 		if(dao.getuser(userid, passwd)){
 			ActionContext.getContext().getSession().put("username", userid);
 			forward="success";
@@ -42,5 +42,4 @@ public class LoginAction extends ActionSupport {
 		}
 		return forward;
 	}
-	
 }
