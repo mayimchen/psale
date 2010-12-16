@@ -2,6 +2,8 @@ package com.sheng.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sheng.po.Outwuliao;
 import com.sheng.util.Jdbcutil;
@@ -176,6 +178,46 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			jdbc.close(conn);
 		}
 		return flag;
+	}
+	/*
+	 * 查看所有出库单
+	 * **/
+	public List<Outwuliao> findallout() {
+		// TODO Auto-generated method stub
+		List<Outwuliao> ls=new ArrayList<Outwuliao>();
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select * from delwuliao");
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					Outwuliao ow=new Outwuliao();
+					ow.setOutname(rs.getString("outname"));
+					ow.setOutnum(rs.getString("outnum"));
+					ow.setOutprice(rs.getString("outprice"));
+					ow.setOutuserid(rs.getString("outuserid"));
+					ow.setOutdate(rs.getString("outdate").substring(0, 19));
+					ls.add(ow);
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return ls;
 	}
 	
 }

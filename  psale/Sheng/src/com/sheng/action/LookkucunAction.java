@@ -16,6 +16,7 @@ public class LookkucunAction extends ActionSupport {
 	 * 查看所有库存
 	 */
 	private static final long serialVersionUID = 1L;
+	FindwuliaoDAO findwuliao=new FindwuliaoDaoImpl();
 	private List<Addwuliao> wuliaolist;
 
 	public List<Addwuliao> getWuliaolist() {
@@ -33,7 +34,6 @@ public class LookkucunAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		FindwuliaoDAO findwuliao=new FindwuliaoDaoImpl();
 		String forward="";
 		wuliaolist=new ArrayList<Addwuliao>();
 		wuliaolist=findwuliao.findalladd();

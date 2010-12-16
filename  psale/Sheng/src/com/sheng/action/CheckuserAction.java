@@ -10,6 +10,7 @@ public class CheckuserAction extends ActionSupport {
 	 * ºÏ≤Èid «∑Ò¥Ê‘⁄
 	 */
 	private static final long serialVersionUID = 1L;
+	CheckuserexistDAO dao=new CheckuserexistDaoImpl();
 	private String userid;
 	private int  showmessage;
 	public int getShowmessage() {
@@ -27,7 +28,6 @@ public class CheckuserAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		CheckuserexistDAO dao=new CheckuserexistDaoImpl();
 		if(dao.checkuseridexist(userid)){
 			showmessage=1;
 		}

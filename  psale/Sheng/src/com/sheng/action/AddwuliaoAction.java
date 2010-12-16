@@ -15,6 +15,7 @@ public class AddwuliaoAction extends ActionSupport {
 	 * ÃÌº”ŒÔ¡œaction
 	 */
 	private static final long serialVersionUID = 1L;
+	Addwuliao aw=new Addwuliao();
 	private String inname;
 	private String innum;
 	private String inprice;
@@ -60,7 +61,6 @@ public class AddwuliaoAction extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		String forward="";
-		Addwuliao aw=new Addwuliao();
 		indate=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
 		InsertwuliaoDAO dao=new InsertwuliaoDaoImpl();
 		aw.setInname(inname);

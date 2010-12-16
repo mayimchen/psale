@@ -1,13 +1,12 @@
 package com.sheng.action;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sheng.dao.DelwuliaoDAO;
+import com.sheng.dao.DelwuliaoDaoImpl;
 import com.sheng.po.Outwuliao;
-import com.sheng.util.Jdbcutil;
 
 public class LookoutAction extends ActionSupport {
 
@@ -15,6 +14,7 @@ public class LookoutAction extends ActionSupport {
 	 * 查看所有的销售单子
 	 */
 	private static final long serialVersionUID = 1L;
+	DelwuliaoDAO ddao=new DelwuliaoDaoImpl();
 	private List<Outwuliao> ls;
 	public List<Outwuliao> getLs() {
 		return ls;
@@ -26,29 +26,14 @@ public class LookoutAction extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		ls=new ArrayList<Outwuliao>();
+		ls=ddao.findallout();
 		String forward="";
-		Jdbcutil jdbc=new Jdbcutil();
-		Connection conn=jdbc.getConnection();
-		try{
-			ResultSet rs=conn.createStatement().executeQuery("select * from delwuliao");
-			if(rs!=null){
-				while(rs.next()){
-					Outwuliao ow=new Outwuliao();
-					ow.setOutname(rs.getString("outname"));
-					ow.setOutnum(rs.getString("outnum"));
-					ow.setOutprice(rs.getString("outprice"));
-					ow.setOutuserid(rs.getString("outuserid"));
-					ow.setOutdate(rs.getString("outdate").substring(0, 19));
-					ls.add(ow);
+			if(ls!=null){
 					forward="success";
 				}
+			else{
+				forward="input";
 			}
-			forward="success";
-		}catch(Exception e){
-			forward="input";
-			e.printStackTrace();
-		}
 		return forward;
 	}
-	
 }

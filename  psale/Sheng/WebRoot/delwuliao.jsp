@@ -59,7 +59,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="submit" class="STYLE3" value="Èë¿â" />
+							<input type="submit" class="STYLE3" value="³ö¿â" />
 						</td>
 					</tr>
 				</table>

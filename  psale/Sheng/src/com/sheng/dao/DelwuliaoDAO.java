@@ -1,5 +1,7 @@
 package com.sheng.dao;
 
+import java.util.List;
+
 import com.sheng.po.Outwuliao;
 
 public interface DelwuliaoDAO {
@@ -12,4 +14,6 @@ public interface DelwuliaoDAO {
 	public boolean updatenum(String num,String name);//更新下该产品的库存量
 	
 	public boolean delwuliao(String name);//当出库完之后，如果库存量为0，那么就删除库存里还有的物料
+	
+	public List<Outwuliao> findallout();//查看所有出库单
 }
