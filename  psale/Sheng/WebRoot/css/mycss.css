@@ -72,4 +72,42 @@ a:active {
 hr{
 border:1px  dashed red;
 }
+#lightbox{
+	width:100%;
+	height:100%;
+	position:fixed;
+	line-height:0;
+	z-index:100;
+	filter:alpha(opacity=50);
+	left:0px;
+	top:0px;
+	opacity:0.5;
+	background:black;
+}
+/*
+管理用户时css控制
+**/
+#edituser{
+	width:400px;
+	height:300px;
+	background:white;
+	position:absolute;
+	border:1px solid #e7eef8;
+	z-index:200;
+}
+#title{
+	width:100%;
+	height:20px;
+	background:#e7eef8;
+	position:relative;
+	border:0px;
+}
+#title img{
+	float:right;
+	cursor:pointer;
+}
+#contentt{
+	width:100%;
+	height:280px;
+}
 

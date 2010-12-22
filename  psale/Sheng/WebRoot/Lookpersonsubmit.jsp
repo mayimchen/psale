@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 		<title>销售人员销售汇总</title>
 		<link href="css/mycss.css" rel="stylesheet" type="text/css" />
+		<link href="css/mycss2.css" rel="stylesheet" type="text/css" />
 		<link href="css/wrongmessage.css" rel="stylesheet" type="text/css" />
 		<script language="javascript" src="js/jquery-1.4.2.js"></script>
 		<script language="javascript" src="js/calendar.js"></script>
@@ -16,13 +17,13 @@
 	<hr/>
 		<div align="center">
 		<form onsubmit="return checksubmit();" action="lookpersonaction.action">
-			<table cellpadding="0" cellspacing="0" border="1 solid #e7eef8" bordercolor="#e7eef8" width="400" height="200">
+			<table cellpadding="0" cellspacing="0" border="1px solid #e7eef8" bordercolor="#e7eef8" width="400" height="200">
 				<tr>
 					<td class="STYLE3">
 						用户ID
 					</td>
 					<td>
-						<input type="text" name="userid" id="userid" />
+						<input type="text" name="userid" id="userid"/>
 					</td>
 				</tr>
 				<tr>
@@ -54,6 +55,18 @@
 		</div>
 		<div id="submitmessage">
 			请仔细检查你的输入和提示信息
+		</div>
+		<div id="unuseridexit">
+			<div id="tip" class="tipgreen">
+				<pre class="perclass" id="content"></pre>
+			</div>
+			<div id="bkimg" class="tip-arrow-bottom"></div>
+		</div>
+			<div id="inuseriderror">
+		<div id="tip" class="tipgreen">
+				<pre class="perclass">入库人员代码必须为数字</pre>
+			</div>
+			<div id="bkimg" class="tip-arrow-bottom"></div>
 		</div>
 		<div id="personsubmitmessage">
 			<img alt="tip" src="img/img-loading.gif">

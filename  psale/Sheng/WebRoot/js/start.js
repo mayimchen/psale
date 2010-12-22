@@ -54,7 +54,7 @@ $(document).ready(function(){
 								var tt=document.body.scrollTop+ls.top;
 								var ll=document.body.scrollLeft+ls.left;
 								$("#menu")[0].style.left=ll/2+"px";
-								$("#menu")[0].style.top=tt-120+"px";
+								$("#menu")[0].style.top=tt-140+"px";
 								$("#menu").show();
 									}
 													 });

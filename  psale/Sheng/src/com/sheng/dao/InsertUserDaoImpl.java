@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 
 
 
+import com.sheng.po.User;
 import com.sheng.util.Jdbcutil;
 
 public class InsertUserDaoImpl implements InsertUserDAO {
@@ -32,4 +33,34 @@ public class InsertUserDaoImpl implements InsertUserDAO {
 			jdbc.close(conn);
 		}
 	}
+
+	
+	public int updateuser(User u) {
+		// TODO Auto-generated method stub
+		int i=0;
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("update user " +
+					"set username=?,passwd=?" +
+					"where userid=?");
+			pm.setString(1, u.getUsername());
+			pm.setString(2, u.getPasswd());
+			pm.setString(3, u.getUserid());
+			i=pm.executeUpdate();
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return i;
+	}
+		
 }

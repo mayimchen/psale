@@ -20,9 +20,8 @@ public class Jdbcutil {
 		Jdbcpro jdbcpro=ConnfigReader.getInstance().getJdbcpro();
 		try {
 			Class.forName(jdbcpro.getDrivername());
-			System.out.println("the driver had load.....");
+			System.out.println("------the driver had load------");
 			conn=DriverManager.getConnection(jdbcpro.getUrl(), jdbcpro.getUsername(),jdbcpro.getPasswd());
-			//System.out.println("the conn had been created");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("we can't open connection!");
@@ -38,6 +37,7 @@ public class Jdbcutil {
 		if(conn!=null){
 			try {
 				conn.close();
+				System.out.println("------conn had closed------"+"\n"+"\n");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				System.out.println("we can't close connection");
@@ -51,6 +51,7 @@ public class Jdbcutil {
 		if(rs!=null){
 			try {
 				rs.close();
+				System.out.println("rs had closed");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				System.out.println("we can't close the resultset");
@@ -64,6 +65,7 @@ public class Jdbcutil {
 		if(st!=null){
 			try {
 				st.close();
+				System.out.println("st had closed");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				System.out.println("we can't close the statement");
@@ -77,6 +79,7 @@ public class Jdbcutil {
 		if(pm!=null){
 			try {
 				pm.close();
+				System.out.println("pm had closed");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				System.out.println("we can't close the PreparedStatement");

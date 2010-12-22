@@ -29,6 +29,7 @@
 <div align="center"><a href="lookoutaction.action">查看所有出库单</a></div>
 <div align="center"><a href="adduser.jsp">添加工作人员</a></div>
 <div align="center"><a href="Lookpersonsubmit.jsp">查看销售人员汇总</a></div>
+<div align="center"><a href="lookalluseraction.action">人员管理</a></div>
 </div>
 </body>
 </html>
