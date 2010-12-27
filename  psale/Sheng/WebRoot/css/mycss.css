@@ -111,3 +111,31 @@ border:1px  dashed red;
 	height:280px;
 }
 
+/*
+产品管理的css控制
+**/
+#editwuliao{
+	width:450px;
+	height:370px;
+	background:white;
+	position:absolute;
+	border:1px solid #e7eef8;
+	z-index:200;
+}
+#editwuliaotitle{
+	width:100%;
+	height:20px;
+	top:0px;
+	background:#e7eef8;
+	position:relative;
+	border:0px;
+}
+#editwuliaotitle img{
+	float:right;
+	cursor:pointer;
+}
+#editwuliaocontent{
+	width:100%;
+	height:350px;
+}
+

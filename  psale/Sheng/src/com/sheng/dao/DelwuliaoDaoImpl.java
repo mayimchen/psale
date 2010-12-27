@@ -22,10 +22,8 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			pm.setString(1,name);
 			rs=pm.executeQuery();
 			if(rs!=null){
-				if(rs!=null){
+				while(rs.next()){
 					flag=true;
-				}else{
-					flag=false;
 				}
 			}else{
 				flag=false;

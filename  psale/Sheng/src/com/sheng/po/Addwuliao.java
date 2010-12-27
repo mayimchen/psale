@@ -1,12 +1,18 @@
 package com.sheng.po;
 
 public class Addwuliao {
-
+	private int id;
 	private String inname;
 	private String innum;
 	private String inprice;
 	private String inuserid;
 	private String indate;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getInname() {
 		return inname;
 	}

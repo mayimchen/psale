@@ -26,6 +26,14 @@
         <action name="modifyaction" class="com.sheng.action.ModifyUserAction">
         	<result type="json"></result>
         </action>
+        
+         <action name="editproductaction" class="com.sheng.action.EditproductAction">
+        	<result type="json"></result>
+        </action>
+        
+        <action name="modifyproductaction" class="com.sheng.action.ModifyProductAction">
+        	<result type="json"></result>
+        </action>
         <!--
          <action name="white">
         	<result>index2.jsp</result>
@@ -99,9 +107,13 @@
     	
     	<action name="lookalluseraction" class="com.sheng.action.ManageUserAction">
     	<result name="success">Showalluser.jsp</result>
-    	<result name="input">404.jsp</result>
+    	<result name="input">500.htm</result>
     	</action>
     	
+    	<action name="lookallproducts" class="com.sheng.action.ManageProductAction">
+    	<result name="success">managewuliao.jsp</result>
+    	<result name="input">500.htm</result>
+    	</action>
     </package>
    <!-- Add packages here -->
 </struts>

@@ -33,8 +33,7 @@ function closeedit(){
 //监听用户修改后并提交信息
 function savenewuser(){
 		var userid=$("#userid").val();
-		var username=encodeURI(encodeURI($("#username").val()));
-		//var username=$("#username").val();
+		var username=encodeURI(encodeURI($("#username").val()));//解决中文乱码
 		var passwd=$("#passwd").val();
 	  $.getJSON("modifyaction.action",{userid:userid,username:username,passwd:passwd},function(data){
 		if(data.flag==0){

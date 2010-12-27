@@ -36,4 +36,33 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 		}
 		return flag;
 	}
+
+	public int updatewuliao(Addwuliao aw) {
+		// TODO Auto-generated method stub
+		int flag=0;
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("update addwuliao set inname=?,innum=?,inprice=?,inuserid=?,indate=? where id=?");
+			pm.setString(1,aw.getInname());
+			pm.setString(2,aw.getInnum());
+			pm.setString(3,aw.getInprice());
+			pm.setString(4,aw.getInuserid());
+			pm.setString(5,aw.getIndate());
+			pm.setInt(6,aw.getId());
+			flag=pm.executeUpdate();
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return flag;
+	}
 }

@@ -10,4 +10,14 @@ $(document).ready(function(){
 	$("#personmana tr").mouseout(function(){
 			$(this).css("background",yanse);
 	});
+	
+	$("#personmana a").each(function(index){
+				var _this=$(this);
+				_this.mouseover(function(){
+					_this.css("background","white");
+				});
+				_this.mouseout(function(){
+					_this.css("background",yanse);
+				});
+	});
 });

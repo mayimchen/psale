@@ -45,6 +45,7 @@
 					</td>
 					<td>
 						<a href="javascript:edit(<s:property value="userid"/>)">编辑</a>
+						<a href="javascript:edit(<s:property value="userid"/>)">删除</a>
 					</td>
 					</tr>
 				</s:iterator>
@@ -57,7 +58,7 @@
 				<table width="400" height="280" cellpadding="0" cellspacing="0" border="1" bordercolor="#c3d9ff">
 						<tr>
 							<td class="STYLE3">用户ID</td>
-							<td><input type="text" id="userid"/></td>
+							<td><input type="text" id="userid" readonly="readonly"/></td>
 						</tr>
 						<tr>
 							<td class="STYLE3">用户名</td>

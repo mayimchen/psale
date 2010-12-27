@@ -54,7 +54,7 @@ public class ModifyUserAction extends ActionSupport {
 		username=URLDecoder.decode(URLDecoder.decode(username,"UTF-8"), "UTF-8");
 		u.setUsername(username);
 		u.setPasswd(passwd);
-		System.out.println(userid+"\n"+username+"\n"+passwd);
+		//System.out.println(userid+"\n"+username+"\n"+passwd);
 		flag=indao.updateuser(u);
 		return SUCCESS;
 	}

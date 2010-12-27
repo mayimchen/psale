@@ -20,21 +20,62 @@
 	position:relative;
 	width:30px;
 }
-#close{
+#aboutsys{
 	overflow:hidden;
 	visibility: visible;
 	position:relative;
 	float:right;
-	right:5px;
+	right:10px;
 	top:-10px;
-	width:30px;
+	width:60px;
 }
+
+/*
+关于系统的显示div
+**/
+#sysmessage{
+	position:absolute;
+	width:600px;
+	height:270px;
+	z-index:50;
+	background-image:url(../img/bg_new.png);
+}
+#syscontent{
+	position:relative;
+	background:white;
+	left:10px;
+	right:10px;
+	top:10px;
+	bottom:10px;
+	width:580px;
+	height:230px;
+	background:white;
+	z-index:100;
+}
+#systitle{
+    position:relative;
+	width:580px;
+	height:20px;
+	left:10px;
+	right:10px;
+	top:10px;
+	background:#e7eef8;
+}
+#systitle img{
+	float:right;
+	cursor:pointer;
+}
+
 #copyright{
 	position:relative;
-	left:600px;
+	left:530px;
 	top:-30px;
 	width:250px;
 	}
+	
+	/*
+	menu显示位置由js控制
+	**/
 #menu{
 	position:absolute;
 	width:200px;
