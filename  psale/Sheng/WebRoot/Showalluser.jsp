@@ -15,6 +15,7 @@
 		<h3 align="center">
 			人员管理
 		</h3>
+		<a href="index2.jsp">返回首页</a>
 		<hr />
 		<div align="center" id="personmana">
 			<table border="1" cellpadding="0" cellspacing="0" width="600" bordercolor="#c3d9ff">
@@ -27,6 +28,12 @@
 					</td>
 					<td>
 						用户密码
+					</td>
+					<td>
+						员工状态
+					</td>
+					<td>
+						员工权限
 					</td>
 					<td>
 						编辑
@@ -44,8 +51,13 @@
 						<s:property value="passwd" />
 					</td>
 					<td>
+						<s:property value="existstate" />
+					</td>
+					<td>
+						<s:property value="management" />
+					</td>
+					<td>
 						<a href="javascript:edit(<s:property value="userid"/>)">编辑</a>
-						<a href="javascript:edit(<s:property value="userid"/>)">删除</a>
 					</td>
 					</tr>
 				</s:iterator>
@@ -58,7 +70,7 @@
 				<table width="400" height="280" cellpadding="0" cellspacing="0" border="1" bordercolor="#c3d9ff">
 						<tr>
 							<td class="STYLE3">用户ID</td>
-							<td><input type="text" id="userid" readonly="readonly"/></td>
+							<td><input type="text" id="userid" readonly="readonly" style="background:red"/></td>
 						</tr>
 						<tr>
 							<td class="STYLE3">用户名</td>
@@ -67,6 +79,31 @@
 						<tr>							
 							<td class="STYLE3">用户密码</td>
 							<td><input type="text" id="passwd"/></td>
+						</tr>
+						<tr>
+							<td class="STYLE3">
+								员工状态
+							</td>
+							 <td>
+					            <select name="existstate" id="existstate">
+					              <option value="0">存在</option>
+					              <option value="1">不存在</option>
+					            </select>
+				          </td>
+						</tr>
+							<tr>
+							<td class="STYLE3">
+								员工权限
+							</td>
+							<td>
+					            <select name="management" id="management">
+					              <option value="0">0</option>
+					              <option value="1">1</option>
+					              <option value="2">2</option>
+					              <option value="3">3</option>
+					              <option value="4">4</option>
+					            </select>
+				          </td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center"><input type="button" id="save" class="STYLE3" value="保存"/></td>

@@ -4,9 +4,8 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-
 	<!-- 此处为了ajax应用设置的action -->
-    <package name="sheng" namespace="/" extends="json-default">
+    <package name="Sale" namespace="/" extends="json-default">
         <action name="Checkuseraction" class="com.sheng.action.CheckuserAction">
         	<result type="json"></result>
         </action>
@@ -34,11 +33,14 @@
         <action name="modifyproductaction" class="com.sheng.action.ModifyProductAction">
         	<result type="json"></result>
         </action>
-        <!--
-         <action name="white">
-        	<result>index2.jsp</result>
+        
+        <action name="checkpidexistaction" class="com.sheng.action.CheckpidexistAction">
+        	<result type="json"></result>
         </action>
-   			 -->
+        
+        <action name="getpnameaction" class="com.sheng.action.GetPnameAction">
+        	<result type="json"></result>
+        </action>
     </package>
     <!-- 增加新用户的action -->
     <package name="Register" namespace="/" extends="struts-default">

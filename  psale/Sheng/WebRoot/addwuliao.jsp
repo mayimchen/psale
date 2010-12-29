@@ -15,11 +15,22 @@
 		<h3 align="center">
 			入库页面
 		</h3>
+		<a href="index2.jsp">返回首页</a>
 		<hr />
 		<div id="addwuliao" align="center">
-			<form onsubmit="return checksubmit();" action="addwuliaoaction.action">
+			<form onsubmit="return checksubmit();"
+				action="addwuliaoaction.action">
 				<table cellpadding="0" cellspacing="0" bgcolor="#e7eef8" width="600"
 					height="300">
+					<tr>
+						<td class="STYLE3">
+							入库产品编号
+						</td>
+						<td>
+							<input type="text" id="pid" name="pid" />
+						</td>
+					</tr>
+
 					<tr>
 						<td class="STYLE3">
 							入库产品名称
@@ -35,7 +46,8 @@
 							入库产品数量
 						</td>
 						<td>
-							<input type="text" id="innum" name="innum" onblur="checkinnum(this)" />
+							<input type="text" id="innum" name="innum"
+								onblur="checkinnum(this)" />
 
 						</td>
 					</tr>
@@ -46,7 +58,6 @@
 						<td>
 							<input type="text" id="inprice" name="inprice"
 								onblur="checkinprice(this)" />
-
 						</td>
 					</tr>
 					<tr>
@@ -54,7 +65,15 @@
 							入库人员代码
 						</td>
 						<td>
-							<input type="text" id="inuserid" name="inuserid"/>
+							<input type="text" id="inuserid" name="inuserid" />
+						</td>
+					</tr>
+					<tr>
+						<td class="STYLE3">
+							入库产品信息
+						</td>
+						<td>
+							<input type="text" id="detail" name="detail" />
 						</td>
 					</tr>
 					<tr>
@@ -64,6 +83,18 @@
 					</tr>
 				</table>
 			</form>
+		</div>
+		<div id="piderror">
+			<div id="tip" class="tipgreen">
+				<pre class="perclass">产品编号不能为空</pre>
+			</div>
+			<div id="bkimg" class="tip-arrow-bottom"></div>
+		</div>
+		<div id="pidexisterror">
+			<div id="tip" class="tipgreen">
+				<pre class="perclass" id="pidexistmessage"></pre>
+			</div>
+			<div id="bkimg" class="tip-arrow-bottom"></div>
 		</div>
 		<div id="innameerror">
 			<div id="tip" class="tipgreen">

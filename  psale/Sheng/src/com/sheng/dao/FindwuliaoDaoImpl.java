@@ -26,12 +26,13 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 			rs=pm.executeQuery();
 			while(rs.next()){
 				Addwuliao a=new Addwuliao();
-				a.setId(rs.getInt(1));
-				a.setInname(rs.getString(2));
-				a.setInnum(rs.getString(3));
-				a.setInprice(rs.getString(4));
-				a.setInuserid(rs.getString(5));
-				a.setIndate(rs.getString(6).substring(0,19));
+				a.setPid(rs.getString("pid"));
+				a.setInname(rs.getString("inname"));
+				a.setInnum(rs.getInt("innum"));
+				a.setInprice(rs.getDouble("inprice"));
+				a.setInuserid(rs.getString("inuserid"));
+				a.setIndate(rs.getString("indate").substring(0,19));
+				a.setProductsdetail(rs.getString("productsdetail"));
 				list.add(a);
 			}
 			jdbc.close(rs);
@@ -53,7 +54,7 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 	/*
 	 * 查找指定的物料是否存在并保存起来
 	 * **/
-	public Addwuliao getwuliaobyid(int id) {
+	public Addwuliao getwuliaobyid(String pid) {
 		// TODO Auto-generated method stub
 		Addwuliao aw=null;
 		Jdbcutil jdbc=new Jdbcutil();
@@ -62,19 +63,20 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 		ResultSet rs=null;
 		try{
 			conn=jdbc.getConnection();
-			pm=conn.prepareStatement("select * from addwuliao where id=?");
-			pm.setInt(1,id);
+			pm=conn.prepareStatement("select * from addwuliao where pid=?");
+			pm.setString(1,pid);
 			rs=pm.executeQuery();
 			if(rs!=null){
 				while(rs.next()){
 					aw=new Addwuliao();
-					aw.setId(rs.getInt(1));
-					aw.setInname(rs.getString(2));
-					aw.setInnum(rs.getString(3));
-					aw.setInprice(rs.getString(4));
-					aw.setInuserid(rs.getString(5));
-					aw.setIndate(rs.getString(6).substring(0,19));
-				}
+					aw.setPid(rs.getString("pid"));
+					aw.setInname(rs.getString("inname"));
+					aw.setInnum(rs.getInt("innum"));
+					aw.setInprice(rs.getDouble("inprice"));
+					aw.setInuserid(rs.getString("inuserid"));
+					aw.setIndate(rs.getString("indate").substring(0,19));
+					aw.setProductsdetail(rs.getString("productsdetail"));
+				}	
 			}
 			jdbc.close(rs);
 			jdbc.close(pm);

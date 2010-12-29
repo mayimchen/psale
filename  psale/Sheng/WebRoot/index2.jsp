@@ -22,18 +22,35 @@
     <div id="copyright"><font size="3" color="red"><a href="#">author:zqiangzhang@gmail.com</a></font></div>
 </div>
 <div id="menu">
-<div align="center"><a href="delwuliao.jsp">出库</a></div>
-<div align="center"><a href="addwuliao.jsp">入库</a></div>
-<div align="center"><a href="lookwuliaoaction.action">查看库存</a></div>
-<div align="center"><a href="lookallproducts.action">产品管理</a></div>
-<div align="center"><a href="lookalluseraction.action">人员管理</a></div>
-<div align="center"><a href="#">待添加功能</a></div>
-<div align="center"><a href="#">待添加功能</a></div>
-<div align="center"><a href="#">待添加功能</a></div>
-<div align="center"><a href="#">待添加功能</a></div>
-<div align="center"><a href="adduser.jsp">添加工作人员</a></div>
-<div align="center"><a href="lookoutaction.action">查看所有出库单</a></div>
-<div align="center"><a href="Lookpersonsubmit.jsp">查看销售人员汇总</a></div>
+	<div id="menutitle"><img src="img/close.gif"/></div>
+	<table width="580" height="250">
+	<tr>
+		<td><div align="center"><a href="delwuliao.jsp">出库</a></div></td>
+		<td><div align="center"><a href="addwuliao.jsp">入库</a></div></td>
+	</tr>
+	<tr>
+		<td><div align="center"><a href="lookwuliaoaction.action">查看库存</a></div></td>
+		<td><div align="center"><a href="lookallproducts.action">产品管理</a></div></td>
+	</tr>
+	<tr>
+		<td><div align="center"><a href="lookalluseraction.action">人员管理</a></div></td>
+		<td><div align="center"><a href="#">待添加功能</a></div></td>
+	</tr>
+	<tr>
+		
+		<td><div align="center"><a href="#">待添加功能</a></div></td>
+		<td><div align="center"><a href="#">待添加功能</a></div></td>
+	</tr>
+	<tr>
+		<td><div align="center"><a href="#">待添加功能</a></div></td>
+		<td><div align="center"><a href="adduser.jsp">添加工作人员</a></div></td>
+	</tr>
+	<tr>
+		
+		<td><div align="center"><a href="lookoutaction.action">查看所有出库单</a></div></td>
+		<td><div align="center"><a href="Lookpersonsubmit.jsp">查看销售人员汇总</a></div></td>
+	</tr>
+	</table>
 </div>
 <div id="sysmessage">
 	<div id="systitle"><img src="img/close.gif"/></div>

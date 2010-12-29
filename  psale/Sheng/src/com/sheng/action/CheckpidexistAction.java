@@ -1,19 +1,16 @@
 package com.sheng.action;
 
-
-
 import com.opensymphony.xwork2.ActionSupport;
-import com.sheng.dao.DelwuliaoDAO;
-import com.sheng.dao.DelwuliaoDaoImpl;
+import com.sheng.dao.InsertwuliaoDAO;
+import com.sheng.dao.InsertwuliaoDaoImpl;
 
-
-public class CheckoutnameAction extends ActionSupport {
+public class CheckpidexistAction extends ActionSupport {
 
 	/**
-	 * 出库时，检查产品名是否存在的action
+	 * 检查指定的产品编号是否存在
 	 */
+	InsertwuliaoDAO dao=new InsertwuliaoDaoImpl();
 	private static final long serialVersionUID = 1L;
-	DelwuliaoDAO ddao=new DelwuliaoDaoImpl();
 	private String pid;
 	private int message;
 	public String getPid() {
@@ -34,13 +31,7 @@ public class CheckoutnameAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-			if(ddao.checkwuliaonameexist(pid)){
-				message=0;//代表数据库中存在
-			}else{
-				message=1;//代表数据库中不存在
-			}
+		message=dao.findpid(pid);
 		return SUCCESS;
-	}
-	
-	
+	}	
 }

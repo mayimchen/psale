@@ -14,6 +14,7 @@
 	</head>
 	<body>
 	<h3 align="center">查看销售汇总</h3>
+	<a href="index2.jsp">返回首页</a>
 	<hr/>
 		<div align="center">
 		<form onsubmit="return checksubmit();" action="lookpersonaction.action">

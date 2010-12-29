@@ -1,5 +1,5 @@
 //添加物料时的js验证
-var a=0,b=0,c=0,d=0,e=0;
+var a=0,b=0,c=0,d=0,e=0,f=0,g=0;
 $(document).ready(function(){
 	$("#innameerror").hide();
 	$("#innumerror").hide();
@@ -7,7 +7,15 @@ $(document).ready(function(){
 	$("#inuseriderror").hide();
 	$("#unuseridexit").hide();
 	$("#submitmessage").hide();
+	$("#piderror").hide();
+	$("#pidexisterror").hide();
 	//防止传统事件模式的弊端。注册多个事件会报 迭代太多
+	$("#pid").blur(function(){
+		var s=$(this)[0];
+		if(checkpid(s)){
+			checkpidexit(s);
+		}
+	});
 	$("#inuserid").blur(function(){
 			var s=$(this)[0];
 		if(checkuserid(s)){
@@ -15,6 +23,50 @@ $(document).ready(function(){
 		}
 	});
 });
+//入库产品编号不能为空而且不能不存在
+function checkpid(t){
+	var pid=$.trim($("#pid").val());
+	var l=$(t).offset();
+	if(pid.length==0){
+		var tt=l.top-35+document.body.scrollLeft;
+		var ll=l.left+130+document.body.scrollTop;
+		$("#piderror")[0].style.left=ll+"px";
+		$("#piderror")[0].style.top=tt+"px";
+		$("#piderror").show();
+		$("#pid").addClass("username");
+		return false;
+	}
+	else{
+		$("#piderror").hide();
+		$("#pid").removeClass("username");
+		f=1;
+		return true;
+	}
+}
+
+//检查产品编号是否存在
+function checkpidexit(t){
+	var l=$(t).offset();
+	var pid=$.trim($("#pid").val());
+	if(checkpid()){
+		$.getJSON("checkpidexistaction.action",{pid:pid},function(data){
+			if(data.message==0){
+				$("#pidexistmessage").html("<font color='red'>此产品ID已存在，你确定是这个吗？</font>");
+				var tt=l.top-35+document.body.scrollLeft;
+				var ll=l.left+130+document.body.scrollTop;
+				$("#pidexisterror")[0].style.left=ll+"px";
+				$("#pidexisterror")[0].style.top=tt+"px";
+				$("#pidexisterror").show();
+				return false;
+			}else{
+				g=1;
+				$("#pidexisterror").hide();
+				return true;
+			}
+		});
+	}
+}
+
 //入库产品名称不能为空
 function checkinname(t){
 	var inname=$.trim($("#inname").val());
@@ -120,7 +172,7 @@ function checkuseridexit(t){
 }
 //表单提交时的操作
 function checksubmit(){
-	if(a==1&&b==1&&c==1&&d==1&&e==1){
+	if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1){
 		return true;
 	}else{
 		$("#submitmessage").show().delay(1000).fadeOut(2000);

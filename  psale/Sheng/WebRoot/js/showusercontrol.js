@@ -32,10 +32,12 @@ function closeedit(){
 }
 //监听用户修改后并提交信息
 function savenewuser(){
-		var userid=$("#userid").val();
+		var userid=$.trim($("#userid").val());
 		var username=encodeURI(encodeURI($("#username").val()));//解决中文乱码
 		var passwd=$("#passwd").val();
-	  $.getJSON("modifyaction.action",{userid:userid,username:username,passwd:passwd},function(data){
+		var existstate=$("#existstate").val();
+		var management=$("#management").val();
+	  $.getJSON("modifyaction.action",{userid:userid,username:username,passwd:passwd,existstate:existstate,management:management},function(data){
 		if(data.flag==0){
 			alert("false");
 		}else{

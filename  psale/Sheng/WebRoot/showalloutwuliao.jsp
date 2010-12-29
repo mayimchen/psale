@@ -14,11 +14,15 @@
 		<h3 align="center">
 			所有销售单页
 		</h3>
+		<a href="index2.jsp">返回首页</a>
 		<hr>
 		<div align="center">
 			<table border="1" cellpadding="0" cellspacing="0" width="600"
 				bordercolor="#c3d9ff">
 				<tr bordercolor="#c3d9ff">
+					<td>
+						编号
+					</td>
 					<td>
 						名称
 					</td>
@@ -34,9 +38,18 @@
 					<td>
 						日期
 					</td>
+					<td>
+						顾客姓名
+					</td>
+					<td>
+						毛利
+					</td>
 				</tr>
 				<s:iterator value="ls" status="ls">
 					<tr bordercolor="#c3d9ff">
+						<td>
+							<s:property value="pid" />
+						</td>
 						<td>
 							<s:property value="outname" />
 						</td>
@@ -52,8 +65,25 @@
 						<td>
 							<s:property value="outdate" />
 						</td>
+						<td>
+							<s:property value="purchaser" />
+						</td>
+						<td>
+							<s:property value="maori" />
+						</td>
 					</tr>
 				</s:iterator>
+			</table>
+			<table border="1" cellpadding="0" cellspacing="0" width="600"
+				bordercolor="#c3d9ff">
+				<tr>
+					<td>总销售额</td>
+					<td id="sumsale">${sumsale}</td>
+				</tr>
+				<tr>
+					<td>总毛利</td>
+					<td id="summaori">${summaori}</td>
+				</tr>
 			</table>
 		</div>
 	</body>

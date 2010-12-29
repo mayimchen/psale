@@ -4,7 +4,7 @@ $(document).ready(function(){
 	$("#personmana tr:odd").css("background","#e7eef8");	
 	$("#personmana tr").mouseover(function(){
 		 yanse=$(this).css("background");
-		$(this).css("background","green");
+		$(this).css("background","grey");
 	});
 	
 	$("#personmana tr").mouseout(function(){

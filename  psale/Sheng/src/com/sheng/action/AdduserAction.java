@@ -1,10 +1,16 @@
 package com.sheng.action;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.CheckuserexistDAO;
 import com.sheng.dao.CheckuserexistDaoImpl;
 import com.sheng.dao.InsertUserDAO;
 import com.sheng.dao.InsertUserDaoImpl;
+import com.sheng.po.User;
+import com.sheng.util.Jdbcutil;
 
 public class AdduserAction extends ActionSupport {
 	/**
@@ -12,10 +18,19 @@ public class AdduserAction extends ActionSupport {
 	 */
 	CheckuserexistDAO dao=new CheckuserexistDaoImpl();
 	InsertUserDAO insertdao=new InsertUserDaoImpl(); 
+	Logger logger=Logger.getLogger(AdduserAction.class);
 	private static final long serialVersionUID = 1L;
 	private String userid;//用戶ID
 	private String username;//用戶名
 	private String passwd;//用戶密碼
+	private int existstate;//存在状态
+	private int management;//权限
+	public InsertUserDAO getInsertdao() {
+		return insertdao;
+	}
+	public void setInsertdao(InsertUserDAO insertdao) {
+		this.insertdao = insertdao;
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -34,16 +49,36 @@ public class AdduserAction extends ActionSupport {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
+	public int getExiststate() {
+		return existstate;
+	}
+	public void setExiststate(int existstate) {
+		this.existstate = existstate;
+	}
+	public int getManagement() {
+		return management;
+	}
+	public void setManagement(int management) {
+		this.management = management;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 			String forward;
+			User u=new User();
+			u.setExiststate(existstate);
+			u.setManagement(management);
+			u.setPasswd(passwd);
+			u.setUserid(userid);
+			u.setUsername(username);
 			if(userid.length()!=0&&username.length()!=0&&passwd.length()>=6&&checkuserid()){
-				insertdao.saveuser(userid, username, passwd);
+				insertdao.saveuser(u);
 				forward="success";
+				logger.info(ActionContext.getContext().getSession().get("username")+"添加了一个新用户"+userid);
 			}		
 			else{
 				forward="input";

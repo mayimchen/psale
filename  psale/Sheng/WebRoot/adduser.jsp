@@ -22,6 +22,7 @@
 		<h3 align="center">
 			添加新用户页面
 		</h3>
+		<a href="index2.jsp">返回首页</a>
 		<hr />
 		<div id="adduser">
 			<div align="center">
@@ -59,6 +60,31 @@
 								<input type="text" name="passwd" id="passwd"
 									onblur="checkpasswd(this)">
 							</td>
+						</tr>
+						<tr>
+							<td class="STYLE3">
+								员工状态
+							</td>
+							 <td>
+					            <select name="existstate" id="existstate">
+					              <option value="0">存在</option>
+					              <option value="1">不存在</option>
+					            </select>
+				          </td>
+						</tr>
+						<tr>
+							<td class="STYLE3">
+								员工权限
+							</td>
+							<td>
+					            <select name="management" id="management">
+					              <option value="0">0</option>
+					              <option value="1">1</option>
+					              <option value="2">2</option>
+					              <option value="3">3</option>
+					              <option value="4">4</option>
+					            </select>
+				          </td>
 						</tr>
 						<tr>
 							<td colspan="2">

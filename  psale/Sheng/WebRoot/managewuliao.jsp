@@ -16,13 +16,14 @@
 		<h3 align="center">
 			产品管理
 		</h3>
+		<a href="index2.jsp">返回首页</a>
 		<hr />
 		<div align="center" id="swuliao">
 			<table border="0" style="border: 1px solid #c3d9ff;" cellpadding="0"
-				cellspacing="1" width="600">
+				cellspacing="1" width="800">
 				<tr bordercolor="#c3d9ff">
 					<td>
-						ID
+						编号
 					</td>
 					<td>
 						名称
@@ -40,13 +41,16 @@
 						日期
 					</td>
 					<td>
+						备注信息
+					</td>
+					<td>
 						编辑
 					</td>
 				</tr>
 				<s:iterator value="ls" status="ls">
 					<tr bordercolor="#c3d9ff">
 						<td width="40">
-							<s:property value="id" />
+							<s:property value="pid" />
 						</td>
 						<td>
 							<s:property value="inname" />
@@ -64,7 +68,10 @@
 							<s:property value="indate" />
 						</td>
 						<td>
-							<a href="javascript:edit(<s:property value="id"/>)">编辑</a>
+							<s:property value="productsdetail" />
+						</td>
+						<td>
+							<a href="javascript:edit(<s:property value="pid"/>)">编辑</a>
 						</td>
 					</tr>
 				</s:iterator>
@@ -79,7 +86,7 @@
 					style="border: 1px solid #c3d9ff;" cellpadding="0" cellspacing="1">
 					<tr>
 						<td class="STYLE3">
-							ID
+							编号
 						</td>
 						<td>
 							<div align="center">
@@ -124,7 +131,7 @@
 						</td>
 						<td>
 							<div align="center">
-								<input type="text" id="inuserid" align="right" />
+								<input type="text" id="inuserid" align="right" readonly="readonly" style="background: red"/>
 							</div>
 						</td>
 					</tr>
@@ -134,7 +141,17 @@
 						</td>
 						<td>
 							<div align="center">
-								<input type="text" id="indate" align="right" />
+								<input type="text" id="indate" align="right" readonly="readonly" style="background: red"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="STYLE3">
+							备注信息
+						</td>
+						<td>
+							<div align="center">
+								<input type="text" id="detail" align="right" />
 							</div>
 						</td>
 					</tr>

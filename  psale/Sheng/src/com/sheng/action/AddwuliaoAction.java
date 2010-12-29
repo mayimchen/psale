@@ -3,6 +3,10 @@ package com.sheng.action;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.CheckuserexistDAO;
 import com.sheng.dao.CheckuserexistDaoImpl;
@@ -16,27 +20,42 @@ public class AddwuliaoAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	Addwuliao aw=new Addwuliao();
+	Logger logger=Logger.getLogger(AddwuliaoAction.class);
+	private String pid;
 	private String inname;
-	private String innum;
-	private String inprice;
+	private int innum;
+	private double inprice;
 	private String inuserid;
 	private String indate;
+	private String detail;
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
 	public String getInname() {
 		return inname;
 	}
 	public void setInname(String inname) {
 		this.inname = inname;
 	}
-	public String getInnum() {
+	public int getInnum() {
 		return innum;
 	}
-	public void setInnum(String innum) {
+	public void setInnum(int innum) {
 		this.innum = innum;
 	}
-	public String getInprice() {
+	public double getInprice() {
 		return inprice;
 	}
-	public void setInprice(String inprice) {
+	public void setInprice(double inprice) {
 		this.inprice = inprice;
 	}
 	public String getInuserid() {
@@ -62,16 +81,20 @@ public class AddwuliaoAction extends ActionSupport {
 		// TODO Auto-generated method stub
 		String forward="";
 		indate=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+		PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 		InsertwuliaoDAO dao=new InsertwuliaoDaoImpl();
+		aw.setPid(pid);
+		aw.setProductsdetail(detail);
 		aw.setInname(inname);
 		aw.setInnum(innum);
 		aw.setInuserid(inuserid);
 		aw.setInprice(inprice);
 		aw.setIndate(indate);		
-			if(inname.length()!=0&&innum.length()!=0&&inprice.length()!=0&&inuserid.length()!=0&&indate.length()!=0){
+			if(inname.length()!=0&&inuserid.length()!=0&&indate.length()!=0){
 				if(checkuseid()){
 					if(dao.addwuliao(aw)){
 						forward="success";
+		logger.info(ActionContext.getContext().getSession().get("username")+"添加了物料"+pid);
 					}	
 					else{
 						forward="input";

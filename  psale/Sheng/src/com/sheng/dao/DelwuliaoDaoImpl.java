@@ -9,7 +9,7 @@ import com.sheng.po.Outwuliao;
 import com.sheng.util.Jdbcutil;
 public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 
-	public boolean checkwuliaonameexist(String name) {
+	public boolean checkwuliaonameexist(String pid) {
 		// TODO Auto-generated method stub
 		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
@@ -18,8 +18,8 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		boolean flag=false;
 		try{
 			conn=jdbc.getConnection();
-			pm=conn.prepareStatement("select * from addwuliao where inname=?");
-			pm.setString(1,name);
+			pm=conn.prepareStatement("select * from addwuliao where pid=?");
+			pm.setString(1,pid);
 			rs=pm.executeQuery();
 			if(rs!=null){
 				while(rs.next()){
@@ -47,7 +47,7 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	/*
 	 * 查看指定名称的库存量
 	 * **/
-	public int getnum(String name) {
+	public int getnum(String pid) {
 		// TODO Auto-generated method stub
 		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
@@ -56,12 +56,12 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		int a=0;
 		try{
 			conn=jdbc.getConnection();
-			pm=conn.prepareStatement("select innum from addwuliao where inname=?");
-			pm.setString(1, name);
+			pm=conn.prepareStatement("select innum from addwuliao where pid=?");
+			pm.setString(1, pid);
 			rs=pm.executeQuery();
 			if(rs!=null){
 				while(rs.next()){
-					a=Integer.parseInt(rs.getString("innum"));
+					a=rs.getInt("innum");
 				}
 			}
 			jdbc.close(rs);
@@ -90,15 +90,17 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		boolean flag=false;
 		try{
 			conn=jdbc.getConnection();
-			pm=conn.prepareStatement("insert into delwuliao(outname,outnum," +
-																"outprice," +
-																"outuserid,outdate)" +
-																"values(?,?,?,?,?)");
-			pm.setString(1, ow.getOutname());
-			pm.setString(2, ow.getOutnum());
-			pm.setString(3, ow.getOutprice());
-			pm.setString(4, ow.getOutuserid());
-			pm.setString(5, ow.getOutdate());
+			pm=conn.prepareStatement("insert into delwuliao(pid,outname,outnum,outprice,outuserid,outdate,maori,sumsales,summaori,purchaser)values(?,?,?,?,?,?,?,?,?,?)");
+			pm.setString(1,ow.getPid());						
+			pm.setString(2, ow.getOutname());
+			pm.setInt(3, ow.getOutnum());
+			pm.setDouble(4, ow.getOutprice());
+			pm.setString(5, ow.getOutuserid());
+			pm.setString(6, ow.getOutdate());
+			pm.setDouble(7, ow.getMaori());
+			pm.setDouble(8, ow.getSumsales());
+			pm.setDouble(9, ow.getSummaori());
+			pm.setString(10, ow.getPurchaser());
 			flag=pm.execute();
 			jdbc.close(pm);
 			jdbc.close(conn);
@@ -115,7 +117,7 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	/*
 	 * 更新入库数量
 	 * **/
-	public boolean updatenum(String num,String name) {
+	public boolean updatenum(int num,String pid) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
 		Jdbcutil jdbc=new Jdbcutil();
@@ -123,9 +125,9 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		PreparedStatement pm=null;
 		try{
 			conn=jdbc.getConnection();
-			pm=conn.prepareStatement("update addwuliao set innum=? where inname=?");
-			pm.setString(1, num);
-			pm.setString(2, name);
+			pm=conn.prepareStatement("update addwuliao set innum=? where pid=?");
+			pm.setInt(1, num);
+			pm.setString(2, pid);
 			int a=pm.executeUpdate();
 			if(a==0){
 				flag=false;
@@ -148,7 +150,7 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	/*
 	 * 当出库完之后，如果库存量为0，那么就删除库存里物料的名字
 	 * **/
-	public boolean delwuliao(String name) {
+	public boolean delwuliao(String pid) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
 		Jdbcutil jdbc=new Jdbcutil();
@@ -156,8 +158,8 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		PreparedStatement pm=null;
 		try{
 			conn=jdbc.getConnection();
-			pm=conn.prepareStatement("delete from addwuliao where inname=?");
-			pm.setString(1, name);
+			pm=conn.prepareStatement("delete from addwuliao where pid=?");
+			pm.setString(1, pid);
 			int x=pm.executeUpdate();
 			if(x==0){
 				flag=false;
@@ -194,9 +196,12 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			if(rs!=null){
 				while(rs.next()){
 					Outwuliao ow=new Outwuliao();
+					ow.setPid(rs.getString("pid"));
+					ow.setPurchaser(rs.getString("purchaser"));
+					ow.setMaori(rs.getDouble("maori"));
 					ow.setOutname(rs.getString("outname"));
-					ow.setOutnum(rs.getString("outnum"));
-					ow.setOutprice(rs.getString("outprice"));
+					ow.setOutnum(rs.getInt("outnum"));
+					ow.setOutprice(rs.getDouble("outprice"));
 					ow.setOutuserid(rs.getString("outuserid"));
 					ow.setOutdate(rs.getString("outdate").substring(0, 19));
 					ls.add(ow);
@@ -218,4 +223,68 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		return ls;
 	}
 	
+	public String getpname(String pid) {
+		// TODO Auto-generated method stub
+		String message="";
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select inname from addwuliao where pid=?");
+			pm.setString(1,pid);
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					message=rs.getString("inname");
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return message;
+	}
+	public double getprice(String pid) {
+		// TODO Auto-generated method stub
+		double price=0.0;
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select inprice from addwuliao where pid=?");
+			pm.setString(1,pid);
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					price=rs.getDouble("inprice");
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return price;
+	}
 }

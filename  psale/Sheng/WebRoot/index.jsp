@@ -15,10 +15,11 @@
 		<h3 align="center">
 			登录页面
 		</h3>
+		<a href="index2.jsp">返回首页</a>
 		<hr />
 		<div id="login"></div>
 		<div id="apDiv2">
-			<form action="loginaction.action" onSubmit="return tijiao();">
+			<form action="loginaction.action" onSubmit="return tijiao();" method="post">
 				<table width="380" height="147" cellpadding="0" cellspacing="0"
 					border="0" bgcolor="#e7eef8">
 					<tr>
@@ -26,10 +27,8 @@
 							<span class="STYLE3">用户ID</span>
 						</td>
 						<td>
-
 							<input type="text" name="userid" id="userid"
 								onBlur="checkuserid(this)" />
-
 						</td>
 					</tr>
 					<tr>

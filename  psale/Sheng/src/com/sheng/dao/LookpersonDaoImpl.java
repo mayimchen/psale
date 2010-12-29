@@ -30,11 +30,14 @@ public class LookpersonDaoImpl implements LookpersonDAO {
 			if(rs!=null){
 				while(rs.next()){
 					Outwuliao ow=new Outwuliao();
+					ow.setMaori(rs.getDouble("maori"));
+					ow.setPurchaser(rs.getString("purchaser"));
 					ow.setOutname(rs.getString("outname"));
-					ow.setOutnum(rs.getString("outnum"));
-					ow.setOutprice(rs.getString("outprice"));
+					ow.setOutnum(rs.getInt("outnum"));
+					ow.setOutprice(rs.getDouble("outprice"));
 					ow.setOutuserid(rs.getString("outuserid"));
 					ow.setOutdate(rs.getString("outdate").substring(0, 19));
+					ow.setPid(rs.getString("pid"));
 					ls.add(ow);
 				}
 			}

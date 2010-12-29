@@ -43,6 +43,15 @@
 #usernameerror{
 	position:absolute;
 }
+#piderror{
+	position:absolute;
+}
+#pidexisterror{
+	position:absolute;
+}
+#purchasererror{
+	position:absolute;
+}
 #submitmessage{
 	left:400px;
 	top:10px;
@@ -51,3 +60,4 @@
 	background-color:red;
 	position:absolute;
 }
+

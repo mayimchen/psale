@@ -41,10 +41,15 @@ $(document).ready(function() {
 				var ls = $(this).offset();
 				var tt = document.body.scrollTop + ls.top;
 				var ll = document.body.scrollLeft + ls.left;
-				$("#menu")[0].style.left = ll / 2 + "px";
-				$("#menu")[0].style.top = tt - 230 + "px";
+				$("#menu")[0].style.left = ll / 2 -20+ "px";
+				$("#menu")[0].style.top = tt - 290+ "px";
 				$("#menu").show();
 			}
+		});
+		
+		$("#menutitle").click(function() {
+				i++;	
+				$("#menu").hide();
 		});
 		//将关于本系统的介绍栏可以移动,限制容器为window时可以避免出现超出范围时出现滚动条
 		$("#sysmessage").draggable({ 
@@ -52,5 +57,11 @@ $(document).ready(function() {
 							scroll: false ,
 							cursor:"move",
 							opacity: 0.7
+							});
+		
+		$("#menu").draggable({ 
+							containment:"window",
+							scroll: false ,
+							cursor:"move",
 							});
 	});

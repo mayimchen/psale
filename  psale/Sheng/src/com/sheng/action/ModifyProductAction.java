@@ -2,6 +2,10 @@ package com.sheng.action;
 
 import java.net.URLDecoder;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.InsertwuliaoDAO;
 import com.sheng.dao.InsertwuliaoDaoImpl;
@@ -13,24 +17,32 @@ public class ModifyProductAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	InsertwuliaoDAO indao=new InsertwuliaoDaoImpl();
-	private int id;
+	Logger logger=Logger.getLogger(ModifyProductAction.class);
+	private String pid;
 	private int flag;
 	private String inname;
-	private String innum;
-	private String inprice;
+	private int innum;
+	private double inprice;
 	private String inuserid;
 	private String indate;
+	private String detail;
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
 	public int getFlag() {
 		return flag;
 	}
 	public void setFlag(int flag) {
 		this.flag = flag;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getInname() {
 		return inname;
@@ -38,16 +50,16 @@ public class ModifyProductAction extends ActionSupport {
 	public void setInname(String inname) {
 		this.inname = inname;
 	}
-	public String getInnum() {
+	public int getInnum() {
 		return innum;
 	}
-	public void setInnum(String innum) {
+	public void setInnum(int innum) {
 		this.innum = innum;
 	}
-	public String getInprice() {
+	public double getInprice() {
 		return inprice;
 	}
-	public void setInprice(String inprice) {
+	public void setInprice(double inprice) {
 		this.inprice = inprice;
 	}
 	public String getInuserid() {
@@ -66,15 +78,21 @@ public class ModifyProductAction extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		Addwuliao aw=new Addwuliao();
-		aw.setId(id);
+PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
+		aw.setPid(pid);
 		aw.setIndate(indate);
 		aw.setInname(URLDecoder.decode(URLDecoder.decode(inname, "UTF-8"), "UTF-8"));
 		aw.setInnum(innum);
 		aw.setInprice(inprice);
 		aw.setInuserid(inuserid);
-		//System.out.println(URLDecoder.decode(URLDecoder.decode(inname, "UTF-8"), "UTF-8"));
-		//System.out.println("id:"+id+"\n"+"indate:"+indate+"\n"+"inname:"+inname+"\n"+"innum:"+innum+"\n"+inprice+"\n"+"inuserid:"+inuserid);
+		aw.setProductsdetail(URLDecoder.decode(URLDecoder.decode(detail, "UTF-8"), "UTF-8"));
 		flag=indao.updatewuliao(aw);
+		if(flag==0){
+			//未能成功更新
+			logger.info(ActionContext.getContext().getSession().get("username")+"未能更新产品"+pid);
+		}else{
+			logger.info(ActionContext.getContext().getSession().get("username")+"成功更新产品"+pid);
+		}
 		return SUCCESS;
 	}
 }

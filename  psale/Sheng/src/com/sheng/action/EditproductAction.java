@@ -10,27 +10,29 @@ public class EditproductAction extends ActionSupport {
 	 * 修改产品信息的action
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id;
-	private int flag;
+	FindwuliaoDAO fdao = new FindwuliaoDaoImpl();
+	private String id;
+	private String flag;
 	private String inname;
-	private String innum;
-	private String inprice;
+	private int innum;
+	private double inprice;
 	private String inuserid;
 	private String indate;
-
-	public int getId() {
+	private String detail;
+	
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getFlag() {
+	public String getFlag() {
 		return flag;
 	}
 
-	public void setFlag(int flag) {
+	public void setFlag(String flag) {
 		this.flag = flag;
 	}
 
@@ -42,19 +44,19 @@ public class EditproductAction extends ActionSupport {
 		this.inname = inname;
 	}
 
-	public String getInnum() {
+	public int getInnum() {
 		return innum;
 	}
 
-	public void setInnum(String innum) {
+	public void setInnum(int innum) {
 		this.innum = innum;
 	}
 
-	public String getInprice() {
+	public double getInprice() {
 		return inprice;
 	}
 
-	public void setInprice(String inprice) {
+	public void setInprice(double inprice) {
 		this.inprice = inprice;
 	}
 
@@ -74,18 +76,26 @@ public class EditproductAction extends ActionSupport {
 		this.indate = indate;
 	}
 
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		FindwuliaoDAO fdao = new FindwuliaoDaoImpl();
 		Addwuliao aw = new Addwuliao();
 		aw = fdao.getwuliaobyid(flag);
-		id = aw.getId();
+		id = aw.getPid();
 		inname = aw.getInname();
 		innum = aw.getInnum();
 		inprice = aw.getInprice();
 		inuserid = aw.getInuserid();
 		indate = aw.getIndate();
+		detail=aw.getProductsdetail();
 		//System.out.println("id:"+id+"\n"+"inname:"+inname+"\n"+"innum:"+innum+"\n"+"inprice:"+inprice+"\n"+"inuserid:"+inuserid+"\n"+"indate:"+indate);
 		return SUCCESS;
 	}

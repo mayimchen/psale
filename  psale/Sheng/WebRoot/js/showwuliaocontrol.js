@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$("#swuliao tr:odd").css("background","#e7eef8");	
 	$("#swuliao tr").mouseover(function(){
 		 yanse=$(this).css("background");
-		$(this).css("background","green");
+		$(this).css("background","grey");
 	});
 	$("#swuliao tr").mouseout(function(){
 			$(this).css("background",yanse);
@@ -37,6 +37,7 @@ function edit(s){
 		$("#inprice").val(data.inprice);
 		$("#inuserid").val(data.inuserid);
 		$("#indate").val(data.indate);
+		$("#detail").val(data.detail);
 	});
 	$("#lightbox").show();
 	$("#editwuliao").show();
@@ -51,7 +52,8 @@ function saveproduct(){
 		var inprice=$("#inprice").val();
 		var inuserid=$("#inuserid").val();
 		var indate=$("#indate").val();
-		$.getJSON("modifyproductaction.action",{id:id,inname:inname,innum:innum,inprice:inprice,inuserid:inuserid,indate:indate},function(data){
+		var detail=encodeURI(encodeURI($("#detail").val()));
+		$.getJSON("modifyproductaction.action",{pid:id,inname:inname,innum:innum,inprice:inprice,inuserid:inuserid,indate:indate,detail:detail},function(data){
 			if(data.flag==0){
 				alert("false");
 			}else{

@@ -1,5 +1,5 @@
 //删除物料时的js验证
-var a=0,b=0,c=0,d=0,e=0,f=0;
+var a=0,b=0,c=0,d=0,e=0,f=0,g=0;
 $(document).ready(function(){
 	$("#outnameerror").hide();
 	$("#outnumerror").hide();
@@ -9,11 +9,13 @@ $(document).ready(function(){
 	$("#outnamemessage").hide();
 	$("#outuseridmessage").hide();
 	$("#submitmessage").hide();
+	$("#purchasererror").hide();
 	//阻止传统的方式出现问题，即两个函数注册在一个事件上出现的问题
-	$("#outname").blur(function(){
+	$("#pid").blur(function(){
 		var s=$(this)[0];
-		if(checkoutname(s)){
-			checkoutnameexit(s);
+		if(checkpid(s)){
+			checkpidexit(s);//不能写成if(checkpidexit(s))
+			getpname();
 		}
 	});
 	$("#outuserid").blur(function(){
@@ -23,34 +25,33 @@ $(document).ready(function(){
 		}
 	});
 });
-//出库产品名称不能为空
-function checkoutname(t){
-	var outname=$.trim($("#outname").val());
+//出库产品ID不能为空
+function checkpid(t){
+	var pid=$.trim($("#pid").val());
 	var l=$(t).offset();
-	if(outname.length==0){
+	if(pid.length==0){
 		var tt=l.top-35+document.body.scrollLeft;
 		var ll=l.left+130+document.body.scrollTop;
 		$("#outnameerror")[0].style.left=ll+"px";
 		$("#outnameerror")[0].style.top=tt+"px";
 		$("#outnameerror").show();
-		$("#outname").addClass("username");
+		$("#pid").addClass("username");
 		return false;
 	}
 	else{
 		$("#outnameerror").hide();
-		$("#outname").removeClass("username");
+		$("#pid").removeClass("username");
 		a=1;
 		return true;
 	}
 }
-//检查产品名称是否存在
-function checkoutnameexit(t){
-	var outname=$.trim($("#outname").val());
+//检查产品ID是否存在
+function checkpidexit(t){
+	var pid=$.trim($("#pid").val());
 	var l=$(t).offset();
-	if(checkoutname()){
-		$.getJSON("Checkoutnameaction.action",{outname:outname},function(date){
+		$.getJSON("Checkoutnameaction.action",{pid:pid},function(date){
 			if(date.message==1){
-				$("#contentoutname").html("<font color='red'>不存在这样的产品，你确定是这个吗?</font>");
+				$("#contentoutname").html("<font color='red'>不存在这样的编号，你确定是这个吗?</font>");
 				var tt=l.top-35+document.body.scrollLeft;
 				var ll=l.left+130+document.body.scrollTop;
 				$("#outnamemessage")[0].style.left=ll+"px";
@@ -61,7 +62,17 @@ function checkoutnameexit(t){
 				b=1;
 			}
 		});
-	}
+}
+//得到指定ID的产品名字
+function getpname(){
+	var pid=$.trim($("#pid").val());
+	$.getJSON("getpnameaction.action",{pid:pid},function(date){
+		if(date.message.length==0){
+			alert("没有这个商品");
+		}else{
+			$("#outname").val(date.message);
+		}
+	});
 }
 //出库数量检查，必须为数字
 function checkoutnum(t){
@@ -143,6 +154,25 @@ function checkuseridexit(t){
 		});	
 	}	
 }
+//检查顾客姓名是否为空
+function checkpurchaser(t){
+	var purchaser=$.trim($("#purchaser").val());
+	var l=$(t).offset();
+	if(purchaser.length!=0){
+		$("#purchasererror").hide();
+		$("#purchaser").removeClass("username");
+		g=1;
+		return true;
+	}else{
+		var tt=l.top-35+document.body.scrollLeft;
+		var ll=l.left+130+document.body.scrollTop;
+		$("#purchasererror")[0].style.left=ll+"px";
+		$("#purchasererror")[0].style.top=tt+"px";
+		$("#purchasererror").show();
+		$("#purchaser").addClass("username");
+		return false;
+	}
+}
 //当用户出库时检查指定的产品的数量，暂不使用
 function checkrnum(t){
 	var outname=$.trim($("#outname").val());
@@ -158,7 +188,7 @@ function checkrnum(t){
 }
 //表单提交时的操作
 function checksubmit(){
-	if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1){
+	if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1){
 		return true;
 	}else{
 		$("#submitmessage").show().delay(1000).fadeOut(2000);

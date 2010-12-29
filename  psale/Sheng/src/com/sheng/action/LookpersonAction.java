@@ -18,6 +18,20 @@ public class LookpersonAction extends ActionSupport {
 	private Timestamp startdate;
 	private Timestamp enddate;
 	private List<Outwuliao> ls;
+	private double summaori=0.0;
+	private double sumsale=0.0;
+	public double getSummaori() {
+		return summaori;
+	}
+	public void setSummaori(double summaori) {
+		this.summaori = summaori;
+	}
+	public double getSumsale() {
+		return sumsale;
+	}
+	public void setSumsale(double sumsale) {
+		this.sumsale = sumsale;
+	}
 	public List<Outwuliao> getLs() {
 		return ls;
 	}
@@ -53,6 +67,11 @@ public class LookpersonAction extends ActionSupport {
 		ls=new ArrayList<Outwuliao>();
 		ls=lp.getpersonout(userid, startdate, enddate);
 			if(ls!=null){
+				for(int i=0;i<ls.size();i++){
+					summaori+=ls.get(i).getMaori();
+					sumsale+=ls.get(i).getOutprice();
+				}
+				
 				forward="success";
 			}
 			else{

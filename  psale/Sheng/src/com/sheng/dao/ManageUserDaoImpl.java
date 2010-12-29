@@ -28,6 +28,8 @@ public class ManageUserDaoImpl implements ManageUserDAO {
 					u.setUserid(rs.getString("userid"));
 					u.setUsername(rs.getString("username"));
 					u.setPasswd(rs.getString("passwd"));
+					u.setManagement(rs.getInt("management"));
+					u.setExiststate(rs.getInt("existstate"));
 					ls.add(u);
 				}
 			}
