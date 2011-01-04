@@ -141,3 +141,33 @@ border:1px  dashed red;
 h3 img{
 	cursor:pointer;
 }
+
+/*
+导出pdf文件时的css
+**/
+#reporttip{
+	background:#e7eef8;
+	position:absolute;
+	width:600px;
+	height:270px;
+	z-index:100;
+	background-image:url(../img/bg_new.png);
+}
+#reporttipcontent{
+	background:#e7eef8;
+	position:relative;
+	top:20px;
+	left:20px;
+	right:20px;
+	width:500px;
+	height:120px;
+}
+#reportwait{
+	background:#e7eef8;
+	position:relative;
+	top:20px;
+	left:280px;
+	right:20px;
+	width:30px;
+	height:30px;
+}

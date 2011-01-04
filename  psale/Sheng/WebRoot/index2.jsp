@@ -42,7 +42,7 @@
 		<td><div align="center"><a href="#">待添加功能</a></div></td>
 	</tr>
 	<tr>
-		<td><div align="center"><a href="#">待添加功能</a></div></td>
+		<td><div align="center"><a href="lookallwuliaobf.action">查看所有入库单</a></div></td>
 		<td><div align="center"><a href="adduser.jsp">添加工作人员</a></div></td>
 	</tr>
 	<tr>

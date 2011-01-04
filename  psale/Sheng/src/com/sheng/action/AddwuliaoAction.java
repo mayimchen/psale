@@ -94,7 +94,7 @@ public class AddwuliaoAction extends ActionSupport {
 				if(checkuseid()){
 					if(dao.addwuliao(aw)){
 						forward="success";
-		logger.info(ActionContext.getContext().getSession().get("username")+"添加了物料"+pid);
+logger.info(ActionContext.getContext().getSession().get("username")+"在"+new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())+"添加了物料"+pid);
 					}	
 					else{
 						forward="input";

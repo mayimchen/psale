@@ -11,8 +11,6 @@ import java.sql.Statement;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import com.sheng.action.LoginAction;
-
 
 /*
  * the class is a util class
@@ -26,12 +24,12 @@ public class Jdbcutil {
 		PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 		try {
 			Class.forName(jdbcpro.getDrivername());
-			logger.debug("驱动加载完成");
+			logger.info("驱动加载完成");
 			//System.out.println("------the driver had load------");
 			conn=DriverManager.getConnection(jdbcpro.getUrl(), jdbcpro.getUsername(),jdbcpro.getPasswd());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.debug("无法打开连接");
+			logger.info("无法打开连接");
 			//System.out.println("we can't open connection!");
 		}
 		return conn;
@@ -45,11 +43,11 @@ public class Jdbcutil {
 		if(conn!=null){
 			try {
 				conn.close();
-				logger.debug("连接已关闭");
+				logger.info("连接已关闭");
 				//System.out.println("------conn had closed------"+"\n"+"\n");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				logger.debug("无法关闭连接");
+				logger.info("无法关闭连接");
 				//System.out.println("we can't close connection");
 			}
 		}
@@ -61,11 +59,11 @@ public class Jdbcutil {
 		if(rs!=null){
 			try {
 				rs.close();
-				logger.debug("rs已关闭");
+				//logger.debug("rs已关闭");
 				//System.out.println("rs had closed");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				logger.debug("rs无法关闭");
+				//logger.debug("rs无法关闭");
 				//System.out.println("we can't close the resultset");
 			}
 		}
@@ -77,11 +75,11 @@ public class Jdbcutil {
 		if(st!=null){
 			try {
 				st.close();
-				logger.debug("st已关闭");
+				//logger.debug("st已关闭");
 				//System.out.println("st had closed");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				logger.debug("st无法关闭");
+				//logger.debug("st无法关闭");
 				//System.out.println("we can't close the statement");
 			}
 		}
@@ -93,11 +91,11 @@ public class Jdbcutil {
 		if(pm!=null){
 			try {
 				pm.close();
-				logger.debug("pm已关闭");
+				//logger.debug("pm已关闭");
 				//System.out.println("pm had closed");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				logger.debug("pm无法关闭");
+				//logger.debug("pm无法关闭");
 				//System.out.println("we can't close the PreparedStatement");
 			}
 		}

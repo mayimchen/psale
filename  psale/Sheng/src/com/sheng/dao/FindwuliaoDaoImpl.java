@@ -93,5 +93,49 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 		}
 		return aw;
 	}
+	/*
+	 * 查看所有入库单
+	 * **/
 
+	public List<Addwuliao> findalladdbf() {
+		// TODO Auto-generated method stub
+		Jdbcutil jdbc=new Jdbcutil();
+		List<Addwuliao> list=new ArrayList<Addwuliao>();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select * from addwuliaobeifen");
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					Addwuliao a=new Addwuliao();
+					a.setPid(rs.getString("pid"));
+					a.setInname(rs.getString("inname"));
+					a.setInnum(rs.getInt("innum"));
+					a.setInprice(rs.getDouble("inprice"));
+					a.setInuserid(rs.getString("inuserid"));
+					a.setIndate(rs.getString("indate").substring(0,19));
+					a.setProductsdetail(rs.getString("productsdetail"));
+					list.add(a);
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return list;
+	}
+	
+	
 }

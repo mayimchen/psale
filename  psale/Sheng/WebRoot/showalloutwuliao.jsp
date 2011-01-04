@@ -9,10 +9,20 @@
 		<link href="css/mycss.css" rel="stylesheet" type="text/css" />
 		<script language="javascript" src="js/jquery-1.4.2.js"></script>
 		<script language="javascript" src="js/showallwuliao.js"></script>
+		 <style type="text/css">
+<!--
+.STYLE4 {
+	color: #FF0000;
+	font-size: 36px;
+	font-family: "楷体_GB2312";
+}
+-->
+        </style>
 	</head>
 	<body>
 		<h3 align="center">
 			所有销售单页
+			<a href="delpdf.action" id="pdf"><img src="img/pdf.jpg" width="70" height="70"/></a>
 		</h3>
 		<a href="index2.jsp">返回首页</a>
 		<hr>
@@ -85,6 +95,14 @@
 					<td id="summaori">${summaori}</td>
 				</tr>
 			</table>
+		</div>
+			<div id="reporttip">
+			<div class="STYLE4" id="reporttipcontent">
+				<div align="center">系统正在为您准备pdf文件,请不要重复点击，谢谢！</div>
+			</div>
+		<div id="reportwait">
+				<img src="img/img-loading.gif"/>
+			</div>
 		</div>
 	</body>
 </html>

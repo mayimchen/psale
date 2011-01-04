@@ -37,7 +37,7 @@ public class LookkucunAction extends ActionSupport {
 		String forward="";
 		wuliaolist=new ArrayList<Addwuliao>();
 		wuliaolist=findwuliao.findalladd();
-		if(wuliaolist!=null){
+		if(wuliaolist!=null&&wuliaolist.size()!=0){
 			forward="success";
 		}else{
 			forward="input";

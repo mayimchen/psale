@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>Insert title here</title>
+<title>添加用户成功</title>
+<link href="css/mycss.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<h1>添加用户成功</h1>
+<a href="index2.jsp">返回首页</a>
+		<hr />
 添加用戶${username}成功
 </body>
 </html>

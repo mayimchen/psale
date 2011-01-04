@@ -1,5 +1,8 @@
 package com.sheng.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -78,7 +81,7 @@ public class AdduserAction extends ActionSupport {
 			if(userid.length()!=0&&username.length()!=0&&passwd.length()>=6&&checkuserid()){
 				insertdao.saveuser(u);
 				forward="success";
-				logger.info(ActionContext.getContext().getSession().get("username")+"添加了一个新用户"+userid);
+logger.info(ActionContext.getContext().getSession().get("username")+"在"+new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())+"添加了一个新用户"+userid);
 			}		
 			else{
 				forward="input";
