@@ -20,4 +20,10 @@ public interface DelwuliaoDAO {
 	public String getpname(String pid);//得到指定ID产品的名字
 	
 	public double getprice(String pid);//得到指定产品的入库价格
+	
+	public List<Outwuliao> findalloutbypage(int pageSize,int pageNo);//查看所有出库单并利用分页模式显示
+	
+	public List<Integer> gettotalpage(int pageSize);//得到一共有多少页
+	
+	public List<Double> getsumsm();//得到总共的营业额和毛利
 }

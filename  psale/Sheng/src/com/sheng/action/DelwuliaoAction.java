@@ -13,8 +13,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.CheckuserexistDAO;
 import com.sheng.dao.CheckuserexistDaoImpl;
 import com.sheng.dao.DelwuliaoDAO;
-import com.sheng.dao.DelwuliaoDaoImpl;
+
 import com.sheng.po.Outwuliao;
+import com.sheng.util.DaoconfigReader;
 
 public class DelwuliaoAction extends ActionSupport {
 
@@ -22,7 +23,7 @@ public class DelwuliaoAction extends ActionSupport {
 	 * 出库action，出库单子
 	 */
 	CheckuserexistDAO cdao = new CheckuserexistDaoImpl();
-	DelwuliaoDAO ddao = new DelwuliaoDaoImpl();
+	DelwuliaoDAO ddao =null;
 	Logger logger=Logger.getLogger(DelwuliaoAction.class);
 	private static final long serialVersionUID = 1L;
 	private String pid;
@@ -128,15 +129,16 @@ public class DelwuliaoAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		try{
+		ddao=(DelwuliaoDAO) Class.forName(DaoconfigReader.getInstance().getDp().getDelwuliaodao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 		outdate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());	
 	PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 		Outwuliao ow = new Outwuliao();
-		//maori=new BigDecimal("+outprice+").subtract(new BigDecimal("+ddao.getprice(pid)+")).doubleValue();
 		maori=outprice-ddao.getprice(pid);
-		//double c=2.0;
-		//double d=1.1;
-		//System.out.println("(c-d):"+(c-d));
-		//System.out.println("毛利为:"+maori);
 		ow.setPid(pid);
 		ow.setMaori(maori);//毛利需要再计算一下，
 		ow.setPurchaser(purchaser);

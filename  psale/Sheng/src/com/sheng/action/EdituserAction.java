@@ -2,15 +2,15 @@ package com.sheng.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.GetuinfoDAO;
-import com.sheng.dao.GetuinfoDaoImpl;
 import com.sheng.po.User;
+import com.sheng.util.DaoconfigReader;
 
 public class EdituserAction extends ActionSupport {
 	/**
 	 * 修改用户信息时显示用户信息的action
 	 */
 	private static final long serialVersionUID = 1L;
-	GetuinfoDAO udao=new GetuinfoDaoImpl();
+	GetuinfoDAO udao=null;
 	private String userid;
 	private String username;
 	private String passwd;
@@ -42,6 +42,11 @@ public class EdituserAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		try{
+			udao=(GetuinfoDAO) Class.forName(DaoconfigReader.getInstance().getDp().getGetuinfodao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		User u=new User();
 		u=udao.getuser(id);
 		userid=u.getUserid();

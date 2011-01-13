@@ -8,6 +8,8 @@
 		<link href="css/mycss.css" rel="stylesheet" type="text/css" />
 		<link href="css/mycss2.css" rel="stylesheet" type="text/css" />
 		<link href="css/wrongmessage.css" rel="stylesheet" type="text/css" />
+		<link href="css/circleconer.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" href="img/favicon.ico"/>
 		<script language="javascript" src="js/jquery-1.4.2.js"></script>
 		<script language="javascript" src="js/login.js"></script>
 	</head>
@@ -17,11 +19,10 @@
 		</h3>
 		<a href="index2.jsp">返回首页</a>
 		<hr />
-		<div id="login"></div>
-		<div id="apDiv2">
+		<div id="login" class="circlecorner3">
+		<div align="center" class="circlecontent3">
 			<form action="loginaction.action" onSubmit="return tijiao();" method="post">
-				<table width="380" height="147" cellpadding="0" cellspacing="0"
-					border="0" bgcolor="#e7eef8">
+				<table width="380" height="210" border="0" cellpadding="1" cellspacing="1">
 					<tr>
 						<td>
 							<span class="STYLE3">用户ID</span>
@@ -44,11 +45,12 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="submit" class="STYLE3" value="登陆" />
+							<input type="submit" class="button" value="登陆" />
 						</td>
 					</tr>
 				</table>
 			</form>
+		</div>
 		</div>
 		<div id="useriderror">
 			<div id="tip" class="tipgreen">

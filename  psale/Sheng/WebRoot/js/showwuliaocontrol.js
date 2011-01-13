@@ -55,7 +55,7 @@ function saveproduct(){
 		var detail=encodeURI(encodeURI($("#detail").val()));
 		$.getJSON("modifyproductaction.action",{pid:id,inname:inname,innum:innum,inprice:inprice,inuserid:inuserid,indate:indate,detail:detail},function(data){
 			if(data.flag==0){
-				alert("false");
+				alert("ÐÞ¸ÄÊ§°Ü");
 			}else{
 				window.location.reload();
 				$("#editwuliao").hide();

@@ -2,6 +2,7 @@ package com.sheng.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -195,15 +196,7 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			rs=pm.executeQuery();
 			if(rs!=null){
 				while(rs.next()){
-					Outwuliao ow=new Outwuliao();
-					ow.setPid(rs.getString("pid"));
-					ow.setPurchaser(rs.getString("purchaser"));
-					ow.setMaori(rs.getDouble("maori"));
-					ow.setOutname(rs.getString("outname"));
-					ow.setOutnum(rs.getInt("outnum"));
-					ow.setOutprice(rs.getDouble("outprice"));
-					ow.setOutuserid(rs.getString("outuserid"));
-					ow.setOutdate(rs.getString("outdate").substring(0, 19));
+					Outwuliao ow = setproperty(rs);
 					ls.add(ow);
 				}
 			}
@@ -222,7 +215,9 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		}
 		return ls;
 	}
-	
+	/*
+	 * 查出指定ID的名称
+	 * **/
 	public String getpname(String pid) {
 		// TODO Auto-generated method stub
 		String message="";
@@ -255,6 +250,9 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		}
 		return message;
 	}
+	/*
+	 * 查出指定产品的入库价格
+	 * **/
 	public double getprice(String pid) {
 		// TODO Auto-generated method stub
 		double price=0.0;
@@ -287,4 +285,140 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		}
 		return price;
 	}
+	
+	/*
+	 *分页显示出库单
+	 * **/
+	public List<Outwuliao> findalloutbypage(int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		List<Outwuliao> ls=new ArrayList<Outwuliao>();
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select * from delwuliao limit "+(pageSize*pageNo-pageSize)+","+pageSize+"");
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					Outwuliao ow = setproperty(rs);
+					ls.add(ow);
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return ls;
+	}
+	
+	/*
+	 *重构的公共函数
+	 * **/
+	
+	private Outwuliao setproperty(ResultSet rs) throws SQLException {
+		Outwuliao ow=new Outwuliao();
+		ow.setPid(rs.getString("pid"));
+		ow.setPurchaser(rs.getString("purchaser"));
+		ow.setMaori(rs.getDouble("maori"));
+		ow.setOutname(rs.getString("outname"));
+		ow.setOutnum(rs.getInt("outnum"));
+		ow.setOutprice(rs.getDouble("outprice"));
+		ow.setOutuserid(rs.getString("outuserid"));
+		ow.setOutdate(rs.getString("outdate").substring(0, 19));
+		return ow;
+	}
+	
+	/*
+	 * 得到所有的页面数
+	 * **/
+	public List<Integer> gettotalpage(int pageSize) {
+		// TODO Auto-generated method stub
+		List<Integer> num=new ArrayList<Integer>();
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select count(*) from delwuliao");
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					num.add(rs.getInt(1)/pageSize);
+					num.add(rs.getInt(1)%pageSize);
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return num;
+	}
+	
+	/*
+	 * 得到所有的营业额和毛利
+	 * **/
+	public List<Double> getsumsm() {
+		// TODO Auto-generated method stub
+		List<Double> ls=new ArrayList<Double>();
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm1=null;
+		PreparedStatement pm2=null;
+		ResultSet rs1=null;
+		ResultSet rs2=null;
+		try{
+			conn=jdbc.getConnection();
+			pm1=conn.prepareStatement("select sum(outprice) from delwuliao");
+			pm2=conn.prepareStatement("select sum(maori) from delwuliao");
+			rs1=pm1.executeQuery();
+			rs2=pm2.executeQuery();
+			if(rs1!=null&&rs2!=null){
+				while(rs1.next()&&rs2.next()){
+					ls.add(rs1.getDouble(1));
+					ls.add(rs2.getDouble(1));
+				}
+			}
+			jdbc.close(rs1);
+			jdbc.close(rs2);
+			jdbc.close(pm1);
+			jdbc.close(pm2);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs1);
+			jdbc.close(rs2);
+			jdbc.close(pm1);
+			jdbc.close(pm2);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs1);
+			jdbc.close(rs2);
+			jdbc.close(pm1);
+			jdbc.close(pm2);
+			jdbc.close(conn);
+		}
+		return ls;
+	}	
+	
 }

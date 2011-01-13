@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<!--  添加用户时的dao  -->
+	<insertuserdao>com.sheng.dao.InsertUserDaoImpl</insertuserdao>
+	<!--  检查用户是否存在的dao  -->
+	<checkuserexistdao>com.sheng.dao.CheckuserexistDaoImpl</checkuserexistdao>
+	<!--  入库的dao  -->
+	<insertwuliaodao>com.sheng.dao.InsertwuliaoDaoImpl</insertwuliaodao>
+	<!--  出库的dao  -->
+	<delwuliaodao>com.sheng.dao.DelwuliaoDaoImpl</delwuliaodao>
+	<!--  查找库存的dao  -->
+	<findwuliaodao>com.sheng.dao.FindwuliaoDaoImpl</findwuliaodao>
+	<!--  取得用户时信息的dao  -->
+	<getuinfodao>com.sheng.dao.GetuinfoDaoImpl</getuinfodao>
+	<!--  查看销售人员销售汇总的dao  -->
+	<lookpersondao>com.sheng.dao.LookpersonDaoImpl</lookpersondao>
+	<!--  管理用户的dao  -->
+	<manageuserdao>com.sheng.dao.ManageUserDaoImpl</manageuserdao>
+</config>

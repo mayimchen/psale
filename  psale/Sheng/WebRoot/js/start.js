@@ -3,12 +3,22 @@ var i = 0;
 $(document).ready(function() {
 	$("#sysmessage").hide();
 	$("#menu").hide();
+	$("#logoutdiv").hide();
 	$("#login,#aboutsys,#tip,#copyright,#menu a").mouseover(function() {
 		$(this).css("background", "red");
 	});
 	$("#login,#aboutsys,#tip,#copyright,#menu a").mouseout(function() {
 		$(this).css("background", "none");
 	});
+	
+	$("#logout").mouseover(function(){
+		$(this).css("background", "red");
+	});
+	
+	$("#logout").mouseout(function(){
+		$(this).css("background", "none");
+	});
+	
 	$("#systitle img").click(function() {
 		$("#sysmessage").animate( {
 			left : "0px",
@@ -64,4 +74,19 @@ $(document).ready(function() {
 							scroll: false ,
 							cursor:"move",
 							});
+		
+		$("#logout").click(function(){
+			$("#logoutdiv").show();
+			$.getJSON("Logoutaction.action",function(data){
+				if(data.i==1){
+					$("#logoutmessage").html("<font color='red'>您已经成功注销</font>");
+					$("#logoutdiv").fadeOut(3000);
+				}
+				if(data.i==0){
+					$("#logoutmessage").html("<font color='red'>您好像并没有登录</font>");
+					$("#logoutdiv").fadeOut(3000);
+				}
+			});
+		});
+		
 	});

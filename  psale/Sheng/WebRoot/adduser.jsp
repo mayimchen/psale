@@ -8,6 +8,8 @@
 		<link href="css/mycss.css" rel="stylesheet" type="text/css" />
 		<link href="css/mycss2.css" rel="stylesheet" type="text/css" />
 		<link href="css/wrongmessage.css" rel="stylesheet" type="text/css" />
+		<link href="css/circleconer.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" href="img/favicon.ico"/>
 		<script language="javascript" src="js/jquery-1.4.2.js"></script>
 		<script language="javascript" src="js/adduser.js"></script>
 		<style type="text/css">
@@ -24,11 +26,11 @@
 		</h3>
 		<a href="index2.jsp">返回首页</a>
 		<hr />
-		<div id="adduser">
-			<div align="center">
+		<div id="adduser" class="circlecorner">
+			<div align="center" class="circlecontent">
 				<form name="form3" method="post" action="adduseraction.action"
 					onSubmit="return tijiao();">
-					<table cellpadding="0" cellspacing="0" bgcolor="#e7eef8">
+					<table border="0" cellpadding="1" cellspacing="1">
 						<tr>
 							<td colspan="2">
 								<div align="center" class="STYLE3 STYLE4">
@@ -78,18 +80,28 @@
 							</td>
 							<td>
 					            <select name="management" id="management">
-					              <option value="0">0</option>
-					              <option value="1">1</option>
-					              <option value="2">2</option>
-					              <option value="3">3</option>
-					              <option value="4">4</option>
+					             <option value="0">
+									读权限
+								</option>
+								<option value="1">
+									读写权限
+								</option>
+								<option value="2">
+									读写改权限
+								</option>
+								<option value="3">
+									读写改删权限
+								</option>
+								<option value="4">
+									admin
+								</option>
 					            </select>
 				          </td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<div align="center">
-									<input type="submit" class="STYLE3" value="添加">
+									<input type="submit" class="button" value="添加">
 								</div>
 							</td>
 						</tr>

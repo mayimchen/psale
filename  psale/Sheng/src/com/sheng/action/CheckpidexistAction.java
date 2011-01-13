@@ -2,14 +2,14 @@ package com.sheng.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.InsertwuliaoDAO;
-import com.sheng.dao.InsertwuliaoDaoImpl;
+import com.sheng.util.DaoconfigReader;
 
 public class CheckpidexistAction extends ActionSupport {
 
 	/**
 	 * 检查指定的产品编号是否存在
 	 */
-	InsertwuliaoDAO dao=new InsertwuliaoDaoImpl();
+	InsertwuliaoDAO dao=null;
 	private static final long serialVersionUID = 1L;
 	private String pid;
 	private int message;
@@ -31,6 +31,11 @@ public class CheckpidexistAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		try{
+		dao=(InsertwuliaoDAO) Class.forName(DaoconfigReader.getInstance().getDp().getInsertwuliaodao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		message=dao.findpid(pid);
 		return SUCCESS;
 	}	

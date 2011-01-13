@@ -2,12 +2,9 @@
 /* CSS Document */
 #login {
 	position:absolute;
-	width:437px;
-	height:272px;
 	z-index:1;
 	left: 385px;
 	top: 153px;
-	border:1px solid #c3d9ff;
 }
 #adduser {
 	position:absolute;
@@ -17,16 +14,12 @@
 	width:501px;
 	height:300px;
 	background-repeat:no-repeat;
-	border:1px solid #c3d9ff;
 }
 #apDiv2 {
 	position:absolute;
 	left:428px;
 	top:223px;
-	width:382px;
-	height:165px;
 	z-index:3;
-	border:0px solid #c3d9ff;
 }
 .STYLE3 {
 	color: #FF0000;
@@ -171,3 +164,33 @@ h3 img{
 	width:30px;
 	height:30px;
 }
+
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 16px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   cursor:pointer;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }

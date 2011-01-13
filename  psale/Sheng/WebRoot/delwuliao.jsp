@@ -8,7 +8,10 @@
 		<link href="css/mycss.css" rel="stylesheet" type="text/css" />
 		<link href="css/mycss2.css" rel="stylesheet" type="text/css" />
 		<link href="css/wrongmessage.css" rel="stylesheet" type="text/css" />
-		<script language="javascript" src="js/jquery-1.4.2.js"></script>
+		<link href="css/circleconer.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" href="img/favicon.ico"/>
+		<script language="javascript" src="js/jquery-1.4.2.js">
+</script>
 		<script language="javascript" src="js/delwuliao.js">
 </script>
 	</head>
@@ -19,70 +22,96 @@
 		<a href="index2.jsp">返回首页</a>
 		<hr />
 		<div align="center">
-			<form onsubmit="return checksubmit();"
-				action="delwuliaoaction.action">
-				<table cellpadding="0" cellspacing="0" bgcolor="#e7eef8" width="600"
-					height="300">
-					<tr>
-						<td class="STYLE3">
-							出库产品编号
-						</td>
-						<td>
-							<input type="text" id="pid" name="pid" />
-						</td>
-					</tr>
-					<tr>
-						<td class="STYLE3">
-							出库产品名称
-						</td>
-						<td>
-							<input type="text" id="outname" name="outname"
-								readonly="readonly" style="background: red" />
-						</td>
-					</tr>
-					<tr>
-						<td class="STYLE3">
-							出库产品数量
-						</td>
-						<td>
-							<input type="text" id="outnum" name="outnum"
-								onblur="checkoutnum(this)" />
-						</td>
-					</tr>
-					<tr>
-						<td class="STYLE3">
-							出库价格
-						</td>
-						<td>
-							<input type="text" id="outprice" name="outprice"
-								onblur="checkoutprice(this)" />
-						</td>
-					</tr>
-					<tr>
-						<td class="STYLE3">
-							出库人员代码
-						</td>
-						<td>
-							<input type="text" id="outuserid" name="outuserid" />
-						</td>
-					</tr>
-					<tr>
-						<td class="STYLE3">
-							顾客姓名
-						</td>
-						<td>
-							<input type="text" id="purchaser" name="purchaser"
-								onblur="checkpurchaser(this)" />
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<input type="submit" class="STYLE3" value="出库" />
-						</td>
-					</tr>
-				</table>
-			</form>
+
+			<div id="contain" class="contain">
+				<div class="containtop">
+					<div class="tleft"></div>
+					<div class="tright"></div>
+				</div>
+				<div class="containrcenter">
+
+					<div class="containcenter">
+
+						<div align="center">
+							<form onsubmit="return checksubmit();"
+								action="delwuliaoaction.action">
+								<table cellpadding="0" cellspacing="0" bgcolor="#e7eef8"
+									width="600" height="300">
+									<tr>
+										<td class="STYLE3">
+											出库产品编号
+										</td>
+										<td>
+											<input type="text" id="pid" name="pid" />
+										</td>
+									</tr>
+									<tr>
+										<td class="STYLE3">
+											出库产品名称
+										</td>
+										<td>
+											<input type="text" id="outname" name="outname"
+												readonly="readonly" style="background: red" />
+										</td>
+									</tr>
+									<tr>
+										<td class="STYLE3">
+											出库产品数量
+										</td>
+										<td>
+											<input type="text" id="outnum" name="outnum"
+												onblur="checkoutnum(this)" />
+										</td>
+									</tr>
+									<tr>
+										<td class="STYLE3">
+											出库价格
+										</td>
+										<td>
+											<input type="text" id="outprice" name="outprice"
+												onblur="checkoutprice(this)" />
+										</td>
+									</tr>
+									<tr>
+										<td class="STYLE3">
+											出库人员代码
+										</td>
+										<td>
+											<input type="text" id="outuserid" name="outuserid" />
+										</td>
+									</tr>
+									<tr>
+										<td class="STYLE3">
+											顾客姓名
+										</td>
+										<td>
+											<input type="text" id="purchaser" name="purchaser"
+												onblur="checkpurchaser(this)" />
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<input type="submit" class="button" value="出库" />
+										</td>
+									</tr>
+								</table>
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="containbottom">
+					<div class="bleft"></div>
+					<div class="bright"></div>
+				</div>
+			</div>
+
+
 		</div>
+
+
+
 		<div id="rmessage"></div>
 		<div id="outnameerror">
 			<div id="tip" class="tipgreen">

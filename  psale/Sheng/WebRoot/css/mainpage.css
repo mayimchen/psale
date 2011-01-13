@@ -20,13 +20,20 @@
 	position:relative;
 	width:30px;
 }
+
+#logout{
+	left:1000px;
+	position:relative;
+	width:60px;
+	top:-28px;
+}
 #aboutsys{
 	overflow:hidden;
 	visibility: visible;
 	position:relative;
 	float:right;
 	right:10px;
-	top:-10px;
+	top:-13px;
 	width:60px;
 }
 
@@ -69,7 +76,7 @@
 #copyright{
 	position:relative;
 	left:530px;
-	top:-30px;
+	top:-45px;
 	width:250px;
 	}
 	

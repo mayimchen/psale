@@ -8,15 +8,15 @@ import org.apache.log4j.PropertyConfigurator;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.InsertUserDAO;
-import com.sheng.dao.InsertUserDaoImpl;
 import com.sheng.po.User;
+import com.sheng.util.DaoconfigReader;
 
 public class ModifyUserAction extends ActionSupport {
 	/**
 	 * 修改用户信息
 	 */
 	private static final long serialVersionUID = 1L;
-	InsertUserDAO indao=new InsertUserDaoImpl();
+	InsertUserDAO indao=null;
 	Logger logger=Logger.getLogger(ModifyUserAction.class);
 	private User u;
 	private int flag;
@@ -67,6 +67,11 @@ public class ModifyUserAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		try{
+			indao=(InsertUserDAO) Class.forName(DaoconfigReader.getInstance().getDp().getInsertuserdao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		u=new User();
 PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 		u.setUserid(userid);

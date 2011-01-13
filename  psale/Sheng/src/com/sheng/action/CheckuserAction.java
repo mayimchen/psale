@@ -2,7 +2,8 @@ package com.sheng.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.CheckuserexistDAO;
-import com.sheng.dao.CheckuserexistDaoImpl;
+
+import com.sheng.util.DaoconfigReader;
 
 public class CheckuserAction extends ActionSupport {
 
@@ -10,7 +11,7 @@ public class CheckuserAction extends ActionSupport {
 	 * ºÏ≤Èid «∑Ò¥Ê‘⁄
 	 */
 	private static final long serialVersionUID = 1L;
-	CheckuserexistDAO dao=new CheckuserexistDaoImpl();
+	CheckuserexistDAO dao=null;
 	private String userid;
 	private int  showmessage;
 	public int getShowmessage() {
@@ -28,6 +29,11 @@ public class CheckuserAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		try{
+		dao=(CheckuserexistDAO) Class.forName(DaoconfigReader.getInstance().getDp().getCheckuserexistdao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		if(dao.checkuseridexist(userid)){
 			showmessage=1;
 		}

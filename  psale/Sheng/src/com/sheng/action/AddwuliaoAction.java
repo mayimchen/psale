@@ -9,10 +9,11 @@ import org.apache.log4j.PropertyConfigurator;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.CheckuserexistDAO;
-import com.sheng.dao.CheckuserexistDaoImpl;
+
 import com.sheng.dao.InsertwuliaoDAO;
-import com.sheng.dao.InsertwuliaoDaoImpl;
+
 import com.sheng.po.Addwuliao;
+import com.sheng.util.DaoconfigReader;
 
 public class AddwuliaoAction extends ActionSupport {
 	/**
@@ -20,6 +21,7 @@ public class AddwuliaoAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	Addwuliao aw=new Addwuliao();
+	InsertwuliaoDAO dao=null;
 	Logger logger=Logger.getLogger(AddwuliaoAction.class);
 	private String pid;
 	private String inname;
@@ -79,10 +81,14 @@ public class AddwuliaoAction extends ActionSupport {
 	 * **/
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		try{
+			dao=(InsertwuliaoDAO) Class.forName(DaoconfigReader.getInstance().getDp().getInsertwuliaodao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		String forward="";
 		indate=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
 		PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
-		InsertwuliaoDAO dao=new InsertwuliaoDaoImpl();
 		aw.setPid(pid);
 		aw.setProductsdetail(detail);
 		aw.setInname(inname);
@@ -114,7 +120,12 @@ logger.info(ActionContext.getContext().getSession().get("username")+"在"+new Sim
  * **/
 public boolean checkuseid() throws ClassNotFoundException{
 		boolean flag = false;
-		CheckuserexistDAO cedao=new CheckuserexistDaoImpl();
+		CheckuserexistDAO cedao=null;
+		try{
+		cedao=(CheckuserexistDAO) Class.forName(DaoconfigReader.getInstance().getDp().getCheckuserexistdao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		if(cedao.checkuseridexist(getInuserid())){
 			flag = true;//-----------存在就返回true
 		}else{

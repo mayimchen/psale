@@ -5,22 +5,20 @@ import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.CheckuserexistDAO;
-import com.sheng.dao.CheckuserexistDaoImpl;
 import com.sheng.dao.InsertUserDAO;
-import com.sheng.dao.InsertUserDaoImpl;
 import com.sheng.po.User;
-import com.sheng.util.Jdbcutil;
+import com.sheng.util.DaoconfigReader;
+
 
 public class AdduserAction extends ActionSupport {
 	/**
 	 * 添加新用戶的action
 	 */
-	CheckuserexistDAO dao=new CheckuserexistDaoImpl();
-	InsertUserDAO insertdao=new InsertUserDaoImpl(); 
+    CheckuserexistDAO dao=null;
+	InsertUserDAO insertdao=null;
 	Logger logger=Logger.getLogger(AdduserAction.class);
 	private static final long serialVersionUID = 1L;
 	private String userid;//用戶ID
@@ -70,6 +68,12 @@ public class AdduserAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		 try{
+			 dao=(CheckuserexistDAO) Class.forName(DaoconfigReader.getInstance().getDp().getCheckuserexistdao()).newInstance();
+			 insertdao=(InsertUserDAO) Class.forName(DaoconfigReader.getInstance().getDp().getInsertuserdao()).newInstance();
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
 		PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 			String forward;
 			User u=new User();

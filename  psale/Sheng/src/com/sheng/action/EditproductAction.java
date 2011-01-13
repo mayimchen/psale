@@ -2,15 +2,15 @@ package com.sheng.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.FindwuliaoDAO;
-import com.sheng.dao.FindwuliaoDaoImpl;
 import com.sheng.po.Addwuliao;
+import com.sheng.util.DaoconfigReader;
 
 public class EditproductAction extends ActionSupport {
 	/**
 	 * 修改产品信息的action
 	 */
 	private static final long serialVersionUID = 1L;
-	FindwuliaoDAO fdao = new FindwuliaoDaoImpl();
+	FindwuliaoDAO fdao = null;
 	private String id;
 	private String flag;
 	private String inname;
@@ -87,6 +87,11 @@ public class EditproductAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		try{
+			fdao=(FindwuliaoDAO) Class.forName(DaoconfigReader.getInstance().getDp().getFindwuliaodao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		Addwuliao aw = new Addwuliao();
 		aw = fdao.getwuliaobyid(flag);
 		id = aw.getPid();
@@ -96,7 +101,6 @@ public class EditproductAction extends ActionSupport {
 		inuserid = aw.getInuserid();
 		indate = aw.getIndate();
 		detail=aw.getProductsdetail();
-		//System.out.println("id:"+id+"\n"+"inname:"+inname+"\n"+"innum:"+innum+"\n"+"inprice:"+inprice+"\n"+"inuserid:"+inuserid+"\n"+"indate:"+indate);
 		return SUCCESS;
 	}
 }

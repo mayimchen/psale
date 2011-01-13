@@ -8,15 +8,16 @@ import org.apache.log4j.PropertyConfigurator;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sheng.dao.InsertwuliaoDAO;
-import com.sheng.dao.InsertwuliaoDaoImpl;
+
 import com.sheng.po.Addwuliao;
+import com.sheng.util.DaoconfigReader;
 
 public class ModifyProductAction extends ActionSupport {
 	/**
 	 * 更新产品资料的action
 	 */
 	private static final long serialVersionUID = 1L;
-	InsertwuliaoDAO indao=new InsertwuliaoDaoImpl();
+	InsertwuliaoDAO indao=null;
 	Logger logger=Logger.getLogger(ModifyProductAction.class);
 	private String pid;
 	private int flag;
@@ -77,6 +78,11 @@ public class ModifyProductAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		try{
+			indao=(InsertwuliaoDAO) Class.forName(DaoconfigReader.getInstance().getDp().getInsertwuliaodao()).newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		Addwuliao aw=new Addwuliao();
 PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 		aw.setPid(pid);

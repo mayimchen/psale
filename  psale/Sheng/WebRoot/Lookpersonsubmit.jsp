@@ -8,6 +8,8 @@
 		<link href="css/mycss.css" rel="stylesheet" type="text/css" />
 		<link href="css/mycss2.css" rel="stylesheet" type="text/css" />
 		<link href="css/wrongmessage.css" rel="stylesheet" type="text/css" />
+		<link href="css/circleconer.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" href="img/favicon.ico"/>
 		<script language="javascript" src="js/jquery-1.4.2.js"></script>
 		<script language="javascript" src="js/calendar.js"></script>
 		<script language="javascript" src="js/personsubmit.js"></script>
@@ -16,9 +18,10 @@
 	<h3 align="center">查看销售汇总</h3>
 	<a href="index2.jsp">返回首页</a>
 	<hr/>
-		<div align="center">
+		<div align="center" class="circlecorner2">
+		<div align="center" class="circlecontent2">
 		<form onsubmit="return checksubmit();" action="lookpersonaction.action">
-			<table cellpadding="0" cellspacing="0" border="1px solid #e7eef8" bordercolor="#e7eef8" width="400" height="200">
+			<table border="0"  cellpadding="1" cellspacing="1" width="400" height="200">
 				<tr>
 					<td class="STYLE3">
 						用户ID
@@ -47,12 +50,13 @@
 				<tr>
 					<td colspan="2" >
 						<div align="center">
-							<input type="submit"  class="STYLE3" value="检索" />
+							<input type="submit"  class="button" value="检索" />
 						</div>
 					</td>
 				</tr>
 			</table>
 		</form>
+		</div>
 		</div>
 		<div id="submitmessage">
 			请仔细检查你的输入和提示信息
@@ -70,7 +74,7 @@
 			<div id="bkimg" class="tip-arrow-bottom"></div>
 		</div>
 		<div id="personsubmitmessage">
-			<img alt="tip" src="img/img-loading.gif">
+			<img alt="提示信息" src="img/img-loading.gif">
 		</div>
 	</body>
 </html>

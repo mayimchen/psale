@@ -1,0 +1,138 @@
+/* CSS Document */
+.contain{
+	width:620px;
+	background:url(../images/circle_corner_lcenter.gif) left top repeat-y;
+	position:relative;
+	border-color:grey;
+}
+.contain2{
+	width:820px;
+	background:url(../images/circle_corner_lcenter.gif) left top repeat-y;
+	position:relative;
+}
+.containtop,.containbottom{
+	height:8px;
+	background:url(../images/circle_corner_tbcenter.gif) left top repeat-x;
+	position:relative;
+}
+.containbottom{
+	background-position:left bottom;
+}
+.containrcenter{
+	background:url(../images/circle_corner_rcenter.gif) right top repeat-y;
+	padding-left:3px;
+	padding-right:3px;
+}
+.containcenter{
+	height:300px;
+}
+
+.containcenter2{
+	height:30px;
+}
+.tleft,.tright,.bleft,.bright{
+	background:url(../images/circle_corner_lrtop.gif) left top no-repeat;
+	overflow:hidden;
+	position:absolute;
+	top:0px;
+	height:8px;
+	width:9px;
+}
+.containtop .tleft{
+	left:0px;
+}
+.containtop .tright{
+	right:0px;
+	background:url(../images/circle_corner_lrtop.gif) right top no-repeat;
+}
+.containbottom .bleft{
+	left:0px;
+	background:url(../images/circle_corner_lrbottom.gif);
+}
+.containbottom .bright{
+	right:0px;
+	background:url(../images/circle_corner_lrbottom.gif) right top no-repeat;
+}
+
+
+/*
+另一种圆角模式
+**/
+.circlecorner{
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		width:501px;
+		height:300px; 
+		position:absolute;
+		background: #e9eaee;
+        border: 2px solid #ffffff;
+        padding: 20px 10px 10px 20px;
+        margin: 0 auto;
+        text-align: center;
+        box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+        -moz-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+        -webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+}
+
+.circlecontent{
+	width:490px; 
+	height:290px;
+	background:white; 
+	position:relative; 
+	z-index:100;
+}
+
+.circlecorner2{
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		width:410px;
+		height:210px; 
+		position:absolute;
+		background: #e9eaee;
+        border: 2px solid #ffffff;
+        padding: 20px 20px 10px 20px;
+        margin: 0 auto;
+        box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+        -moz-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+        -webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+        left:400px;
+        top:100px;
+}
+
+.circlecontent2{
+	width:400px; 
+	height:200px;
+	background:white; 
+	position:relative; 
+}
+
+.circlecorner3{
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		width:390px;
+		height:220px; 
+		position:absolute;
+		background: #e9eaee;
+        border: 2px solid #ffffff;
+        padding: 20px 10px 10px 20px;
+        margin: 0 auto;
+        text-align: center;
+        box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+        -moz-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+        -webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+        left:400px;
+        top:100px;
+}
+
+.circlecontent3{
+	width:380px; 
+	height:210px;
+	background:white; 
+	position:relative; 
+}
+
+
+
