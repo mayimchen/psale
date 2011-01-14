@@ -24,6 +24,7 @@ public class DaoconfigReader {
 			Element getuinfodao=(Element) doc.selectSingleNode("//config/getuinfodao");
 			Element lookpersondao=(Element) doc.selectSingleNode("//config/lookpersondao");
 			Element manageuserdao=(Element) doc.selectSingleNode("//config/manageuserdao");
+			Element saveandbackdao=(Element) doc.selectSingleNode("//config/saveandbackdao");
 			dp.setCheckuserexistdao(checkuserexistdao.getStringValue());
 			dp.setDelwuliaodao(delwuliaodao.getStringValue());
 			dp.setFindwuliaodao(findwuliaodao.getStringValue());
@@ -32,6 +33,7 @@ public class DaoconfigReader {
 			dp.setInsertwuliaodao(insertwuliaodao.getStringValue());
 			dp.setLookpersondao(lookpersondao.getStringValue());
 			dp.setManageuserdao(manageuserdao.getStringValue());
+			dp.setSaveandbackdao(saveandbackdao.getStringValue());
 		} catch (Exception  e) {
 			System.out.println("dao解析文件加载失败");
 			e.printStackTrace();

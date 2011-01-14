@@ -16,4 +16,6 @@
 	<lookpersondao>com.sheng.dao.LookpersonDaoImpl</lookpersondao>
 	<!--  管理用户的dao  -->
 	<manageuserdao>com.sheng.dao.ManageUserDaoImpl</manageuserdao>
+	<!-- 数据备份dao  -->
+	<saveandbackdao>com.sheng.dao.SaveandBackdataImpl</saveandbackdao>
 </config>

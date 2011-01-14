@@ -4,6 +4,7 @@ $(document).ready(function() {
 	$("#sysmessage").hide();
 	$("#menu").hide();
 	$("#logoutdiv").hide();
+	$("#saveandbackdiv").hide();
 	$("#login,#aboutsys,#tip,#copyright,#menu a").mouseover(function() {
 		$(this).css("background", "red");
 	});
@@ -88,5 +89,18 @@ $(document).ready(function() {
 				}
 			});
 		});
-		
+	    /*备份数据*/
+		$("#saveandback").click(function(){	
+			$("#saveandbackdiv").show();
+			$.getJSON("saveandbackaction",function(data){
+			if(data.i==1){
+		$("#saveandbackmessage").html("<font color='red'>已经成功将数据库备份到<font color='green'>C</font>盘下，请及时做好备份转移</font>");
+		$("#saveandbackdiv").fadeOut(3000);
+			}else{
+				$("#saveandbackmessage").html("<font color='red'>保存时出了些问题，请检查是否已保存过</font>");
+				$("#saveandbackdiv").fadeOut(3000);
+			}
+		});
+		});
+	
 	});

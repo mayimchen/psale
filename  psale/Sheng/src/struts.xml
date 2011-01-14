@@ -45,6 +45,10 @@
         <action name="Logoutaction" class="com.sheng.action.LogoutAction">
         	<result type="json"></result>
         </action>
+        
+         <action name="saveandbackaction" class="com.sheng.action.SavedataAction">
+        	<result type="json"></result>
+        </action>
     </package>
     <!-- 增加新用户的action -->
     <package name="Register" namespace="/" extends="struts-default">

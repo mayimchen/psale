@@ -9,6 +9,14 @@ public class Daopro {
 	private String getuinfodao;
 	private String lookpersondao;
 	private String manageuserdao;
+	private String saveandbackdao;
+	
+	public String getSaveandbackdao() {
+		return saveandbackdao;
+	}
+	public void setSaveandbackdao(String saveandbackdao) {
+		this.saveandbackdao = saveandbackdao;
+	}
 	public String getInsertuserdao() {
 		return insertuserdao;
 	}
