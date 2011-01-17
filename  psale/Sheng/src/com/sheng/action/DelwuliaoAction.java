@@ -140,10 +140,10 @@ public class DelwuliaoAction extends ActionSupport {
 		Outwuliao ow = new Outwuliao();
 		maori=outprice-ddao.getprice(pid);
 		ow.setPid(pid);
-		ow.setMaori(maori);//毛利需要再计算一下，
+		ow.setMaori(maori*outnum);//毛利需要再计算一下
 		ow.setPurchaser(purchaser);
-		ow.setSummaori(maori);//总毛利
-		ow.setSumsales(outprice);//总销售额
+		ow.setSummaori(maori*outnum);//总毛利
+		ow.setSumsales(outprice*outnum);//总销售额
 		ow.setOutdate(outdate);
 		ow.setOutname(outname);
 		ow.setOutnum(outnum);

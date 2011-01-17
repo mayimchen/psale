@@ -28,17 +28,11 @@ function checkpid(t){
 	var pid=$.trim($("#pid").val());
 	var l=$(t).offset();
 	if(pid.length==0){
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#piderror")[0].style.left=ll+"px";
-		$("#piderror")[0].style.top=tt+"px";
-		$("#piderror").show();
-		$("#pid").addClass("username");
+		$(this).getpos(l,"piderror","pid");
 		return false;
 	}
 	else{
-		$("#piderror").hide();
-		$("#pid").removeClass("username");
+		$(this).hidediv("piderror","pid");
 		f=1;
 		return true;
 	}
@@ -72,17 +66,11 @@ function checkinname(t){
 	var inname=$.trim($("#inname").val());
 	var l=$(t).offset();
 	if(inname.length==0){
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#innameerror")[0].style.left=ll+"px";
-		$("#innameerror")[0].style.top=tt+"px";
-		$("#innameerror").show();
-		$("#inname").addClass("username");
+		$(this).getpos(l,"innameerror","inname");
 		return false;
 	}
 	else{
-		$("#innameerror").hide();
-		$("#inname").removeClass("username");
+		$(this).hidediv("innameerror","inname");
 		a=1;
 		return true;
 	}
@@ -95,17 +83,11 @@ function checkinnum(t){
 	var l=$(t).offset();
 	var rs=/\d+/;
 	if(rs.test(innum)){
-		$("#innumerror").hide();
-		$("#innum").removeClass("username");
+		$(this).hidediv("innumerror","innum");
 		b=1;
 		return true;
 	}else{
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#innumerror")[0].style.left=ll+"px";
-		$("#innumerror")[0].style.top=tt+"px";
-		$("#innumerror").show();
-		$("#innum").addClass("username");
+		$(this).getpos(l,"innumerror","innum");
 		return false;
 	}
 }
@@ -115,17 +97,11 @@ function checkinprice(t){
 	var l=$(t).offset();
 	var rs=/\d+/;
 	if(rs.test(inprice)){
-		$("#inpriceerror").hide();
-		$("#inprice").removeClass("username");
+		$(this).hidediv("inpriceerror","inprice");
 		c=1;
 		return true;
 	}else{
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#inpriceerror")[0].style.left=ll+"px";
-		$("#inpriceerror")[0].style.top=tt+"px";
-		$("#inpriceerror").show();
-		$("#inprice").addClass("username");
+		$(this).getpos(l,"inpriceerror","inprice");
 		return false;
 	}
 }
@@ -135,17 +111,11 @@ function checkuserid(t){
 	var l=$(t).offset();
 	var rs=/\d+/;
 	if(rs.test(inuserid)){
-		$("#inuseriderror").hide();
-		$("#inuserid").removeClass("username");
+		$(this).hidediv("inuseriderror","inuserid");
 		d=1;
 		return true;
 	}else{
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#inuseriderror")[0].style.left=ll+"px";
-		$("#inuseriderror")[0].style.top=tt+"px";
-		$("#inuseriderror").show();
-		$("#inuserid").addClass("username");
+		$(this).getpos(l,"inuseriderror","inuserid");
 		return false;
 	}
 }

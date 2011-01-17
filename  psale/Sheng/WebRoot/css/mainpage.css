@@ -146,7 +146,6 @@ a:active {
 }
 body{
 	background-image:url(../img/chrome-bird.jpg);
-	/**background-position:480px 160px;*/
-	background-position:top right;
+	background-position:480px 160px;
 	background-repeat: no-repeat;
 }

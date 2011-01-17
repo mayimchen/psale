@@ -11,6 +11,7 @@
 		<link href="css/circleconer.css" rel="stylesheet" type="text/css" />
 		<link rel="shortcut icon" href="img/favicon.ico"/>
 		<script language="javascript" src="js/jquery-1.4.2.js"></script>
+		<script language="javascript" src="js/commonplugin.js"></script>
 		<script language="javascript" src="js/login.js"></script>
 	</head>
 	<body>

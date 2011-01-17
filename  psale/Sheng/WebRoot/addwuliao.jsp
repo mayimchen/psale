@@ -9,11 +9,14 @@
 		<link href="css/mycss2.css" rel="stylesheet" type="text/css" />
 		<link href="css/wrongmessage.css" rel="stylesheet" type="text/css" />
 		<link href="css/circleconer.css" rel="stylesheet" type="text/css" />
-		<link rel="shortcut icon" href="img/favicon.ico"/>
-		<script language="javascript" src="js/jquery-1.4.2.js">
-</script>
-		<script language="javascript" src="js/addwuliao.js">
-</script>
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		
+		<script language="javascript" src="js/jquery-1.4.2.js"></script>
+
+		<script language="javascript" src="js/commonplugin.js"></script>
+
+		<script language="javascript" src="js/addwuliao.js"></script>
+
 	</head>
 	<body>
 		<h3 align="center">
