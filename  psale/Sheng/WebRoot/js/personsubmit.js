@@ -30,17 +30,11 @@ function checkuserid(t){
 	var l=$(t).offset();
 	var rs=/\d+/;
 	if(rs.test(inuserid)){
-		$("#inuseriderror").hide();
-		$("#userid").removeClass("username");
+		$(this).hidediv("inuseriderror","userid");
 		b=1;
 		return true;
 	}else{
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#inuseriderror")[0].style.left=ll+"px";
-		$("#inuseriderror")[0].style.top=tt+"px";
-		$("#inuseriderror").show();
-		$("#userid").addClass("username");
+		$(this).getpos(l,"inuseriderror","userid");
 		return false;
 	}
 }

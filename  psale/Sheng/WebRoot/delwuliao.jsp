@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-		<title>Insert title here</title>
+		<title>出库页面</title>
 		<link href="css/mycss.css" rel="stylesheet" type="text/css" />
 		<link href="css/mycss2.css" rel="stylesheet" type="text/css" />
 		<link href="css/wrongmessage.css" rel="stylesheet" type="text/css" />
@@ -12,6 +12,7 @@
 		<link rel="shortcut icon" href="img/favicon.ico"/>
 		<script language="javascript" src="js/jquery-1.4.2.js">
 </script>
+		<script language="javascript" src="js/commonplugin.js"></script>
 		<script language="javascript" src="js/delwuliao.js">
 </script>
 	</head>

@@ -30,17 +30,11 @@ function checkpid(t){
 	var pid=$.trim($("#pid").val());
 	var l=$(t).offset();
 	if(pid.length==0){
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#outnameerror")[0].style.left=ll+"px";
-		$("#outnameerror")[0].style.top=tt+"px";
-		$("#outnameerror").show();
-		$("#pid").addClass("username");
+		$(this).getpos(l,"outnameerror","pid");
 		return false;
 	}
 	else{
-		$("#outnameerror").hide();
-		$("#pid").removeClass("username");
+		$(this).hidediv("outnameerror","pid");
 		a=1;
 		return true;
 	}
@@ -80,17 +74,11 @@ function checkoutnum(t){
 	var l=$(t).offset();
 	var rs=/\d+/;
 	if(rs.test(outnum)){
-		$("#outnumerror").hide();
-		$("#outnum").removeClass("username");
+		$(this).hidediv("outnumerror","outnum");
 		c=1;
 		return true;
 	}else{
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#outnumerror")[0].style.left=ll+"px";
-		$("#outnumerror")[0].style.top=tt+"px";
-		$("#outnumerror").show();
-		$("#outnum").addClass("username");
+		$(this).getpos(l,"outnumerror","outnum");
 		return false;
 	}
 }
@@ -100,17 +88,11 @@ function checkoutprice(t){
 	var l=$(t).offset();
 	var rs=/\d+/;
 	if(rs.test(outprice)){
-		$("#outpriceerror").hide();
-		$("#outprice").removeClass("username");
+		$(this).hidediv("outpriceerror","outprice");
 		d=1;
 		return true;
 	}else{
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#outpriceerror")[0].style.left=ll+"px";
-		$("#outpriceerror")[0].style.top=tt+"px";
-		$("#outpriceerror").show();
-		$("#outprice").addClass("username");
+		$(this).getpos(l,"outpriceerror","outprice");
 		return false;
 	}
 }
@@ -122,15 +104,11 @@ function checkuserid(t){
 	if(rs.test(outuserid)){
 		$("#outuseriderror").hide();
 		$("#outuserid").removeClass("username");
+		$(this).hidediv("outuseriderror","outuserid");
 		e=1;
 		return true;
 	}else{
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#outuseriderror")[0].style.left=ll+"px";
-		$("#outuseriderror")[0].style.top=tt+"px";
-		$("#outuseriderror").show();
-		$("#outuserid").addClass("username");
+		$(this).getpos(l,"outuseriderror","outuserid");
 		return false;
 	}
 }
@@ -159,17 +137,11 @@ function checkpurchaser(t){
 	var purchaser=$.trim($("#purchaser").val());
 	var l=$(t).offset();
 	if(purchaser.length!=0){
-		$("#purchasererror").hide();
-		$("#purchaser").removeClass("username");
+		$(this).hidediv("purchasererror","purchaser");
 		g=1;
 		return true;
 	}else{
-		var tt=l.top-35+document.body.scrollLeft;
-		var ll=l.left+130+document.body.scrollTop;
-		$("#purchasererror")[0].style.left=ll+"px";
-		$("#purchasererror")[0].style.top=tt+"px";
-		$("#purchasererror").show();
-		$("#purchaser").addClass("username");
+		$(this).getpos(l,"purchasererror","purchaser");
 		return false;
 	}
 }

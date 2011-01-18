@@ -18,6 +18,7 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 		boolean flag=false;
 		try{
 			conn=jdbc.getConnection();
+			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("insert addwuliao(pid,inname,innum,inprice,inuserid,indate,productsdetail)values(?,?,?,?,?,?,?)");
 			pm2=conn.prepareStatement("insert addwuliaobeifen(pid,inname,innum,inprice,inuserid,indate,productsdetail)values(?,?,?,?,?,?,?)");
 			pm.setString(1,aw.getPid());
@@ -37,12 +38,18 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 			pm2.setString(7,aw.getProductsdetail());
 			pm.execute();
 			pm2.execute();
+			conn.commit();
 			flag=true;
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			flag=false;
+			try{
+				conn.rollback();
+			}catch(Exception ep){
+				ep.printStackTrace();
+			}
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}finally{
@@ -60,6 +67,7 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 		PreparedStatement pm=null;
 		try{
 			conn=jdbc.getConnection();
+			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("update addwuliao set inname=?,innum=?,inprice=?,productsdetail=?where pid=?");
 			pm.setString(1,aw.getInname());
 			pm.setInt(2,aw.getInnum());
@@ -67,10 +75,16 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 			pm.setString(4,aw.getProductsdetail());
 			pm.setString(5,aw.getPid());
 			flag=pm.executeUpdate();
+			conn.commit();
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
+			try{
+				conn.rollback();
+			}catch(Exception ep){
+				ep.printStackTrace();
+			}
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}finally{

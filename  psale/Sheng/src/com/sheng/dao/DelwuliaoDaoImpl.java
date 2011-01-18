@@ -91,6 +91,7 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		boolean flag=false;
 		try{
 			conn=jdbc.getConnection();
+			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("insert into delwuliao(pid,outname,outnum,outprice,outuserid,outdate,maori,sumsales,summaori,purchaser)values(?,?,?,?,?,?,?,?,?,?)");
 			pm.setString(1,ow.getPid());						
 			pm.setString(2, ow.getOutname());
@@ -103,10 +104,16 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			pm.setDouble(9, ow.getSummaori());
 			pm.setString(10, ow.getPurchaser());
 			flag=pm.execute();
+			conn.commit();
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}finally{
@@ -126,6 +133,7 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		PreparedStatement pm=null;
 		try{
 			conn=jdbc.getConnection();
+			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("update addwuliao set innum=? where pid=?");
 			pm.setInt(1, num);
 			pm.setString(2, pid);
@@ -135,11 +143,17 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			}else{
 				flag=true;
 			}
+			conn.commit();
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			flag=false;
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}finally{
@@ -159,6 +173,7 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 		PreparedStatement pm=null;
 		try{
 			conn=jdbc.getConnection();
+			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("delete from addwuliao where pid=?");
 			pm.setString(1, pid);
 			int x=pm.executeUpdate();
@@ -167,11 +182,17 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			}else{
 				flag=true;
 			}
+			conn.commit();
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			flag=false;
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			jdbc.close(pm);
 			jdbc.close(conn);
 		}finally{
