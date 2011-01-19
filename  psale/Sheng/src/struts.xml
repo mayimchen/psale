@@ -68,11 +68,14 @@
 		<interceptors>
 			<interceptor name="checklogin"
 				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="checkexiststate"
+				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checkone"
 				class="com.sheng.interceptor.ReadonlyInterceptor"></interceptor>
 			<interceptor-stack name="mydefault">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="checklogin"></interceptor-ref>
+				<interceptor-ref name="checkexiststate"></interceptor-ref>
 				<interceptor-ref name="checkone"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
@@ -80,6 +83,7 @@
 		<global-results>
 			<result name="login">tip.jsp</result>
 			<result name="error">error.jsp</result>
+			<result name="none">none.jsp</result>
 		</global-results>
 
 		<!--查看库存-->
@@ -104,11 +108,14 @@
 		<interceptors>
 			<interceptor name="checklogin"
 				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="checkexiststate"
+				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checktwo"
 				class="com.sheng.interceptor.ReadoutInterceptor"></interceptor>
 			<interceptor-stack name="mydefault">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="checklogin"></interceptor-ref>
+				<interceptor-ref name="checkexiststate"></interceptor-ref>
 				<interceptor-ref name="checktwo"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
@@ -116,6 +123,7 @@
 		<global-results>
 			<result name="login">tip.jsp</result>
 			<result name="error">error.jsp</result>
+			<result name="none">none.jsp</result>
 		</global-results>
 
 		<!--出库action  -->
@@ -133,11 +141,14 @@
 		<interceptors>
 			<interceptor name="checklogin"
 				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="checkexiststate"
+				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checkthree"
 				class="com.sheng.interceptor.ReadoutinInterceptor"></interceptor>
 			<interceptor-stack name="mydefault">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="checklogin"></interceptor-ref>
+				<interceptor-ref name="checkexiststate"></interceptor-ref>
 				<interceptor-ref name="checkthree"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
@@ -145,6 +156,7 @@
 		<global-results>
 			<result name="login">tip.jsp</result>
 			<result name="error">error.jsp</result>
+			<result name="none">none.jsp</result>
 		</global-results>
 
 		<!--添加物料action -->
@@ -174,11 +186,14 @@
 		<interceptors>
 			<interceptor name="checklogin"
 				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="checkexiststate"
+				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checkfour"
 				class="com.sheng.interceptor.ReadoutinaddInterceptor"></interceptor>
 			<interceptor-stack name="mydefault">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="checklogin"></interceptor-ref>
+				<interceptor-ref name="checkexiststate"></interceptor-ref>
 				<interceptor-ref name="checkfour"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
@@ -186,6 +201,7 @@
 		<global-results>
 			<result name="login">tip.jsp</result>
 			<result name="error">error.jsp</result>
+			<result name="none">none.jsp</result>
 		</global-results>
 
 		<!-- 增加新用户的action -->
@@ -203,11 +219,14 @@
 		<interceptors>
 			<interceptor name="checklogin"
 				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="checkexiststate"
+				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checkadmin"
 				class="com.sheng.interceptor.AdminInterceptor"></interceptor>
 			<interceptor-stack name="mydefault">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="checklogin"></interceptor-ref>
+				<interceptor-ref name="checkexiststate"></interceptor-ref>
 				<interceptor-ref name="checkadmin"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
@@ -215,6 +234,7 @@
 		<global-results>
 			<result name="login">tip.jsp</result>
 			<result name="error">error.jsp</result>
+			<result name="none">none.jsp</result>
 		</global-results>
 
 		<!--人员管理  -->

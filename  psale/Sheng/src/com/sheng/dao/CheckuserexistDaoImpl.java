@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sheng.util.Jdbcutil;
 
@@ -119,6 +121,78 @@ public class CheckuserexistDaoImpl implements CheckuserexistDAO {
 			jdbc.close(conn);
 		}
 		return i;
+	}
+	/*
+	 * 得到指定人员的权限
+	 * **/
+	public int getexiststate(String userid) {
+		// TODO Auto-generated method stub
+		int i=0;
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select existstate from user where userid=?");
+			pm.setString(1,userid);
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					i=rs.getInt(1);
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return i;
+	}
+	
+	/*
+	 * 得到指定人员的存在状态以及权限
+	 * **/
+	public List<Integer> getmanageexiststate(String userid) {
+		// TODO Auto-generated method stub
+		List<Integer> ls=new ArrayList<Integer>();
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select management,existstate from user where userid=?");
+			pm.setString(1,userid);
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					ls.add(rs.getInt(1));
+					ls.add(rs.getInt(2));
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return ls;
 	}
 	
 }

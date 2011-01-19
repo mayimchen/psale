@@ -1,7 +1,9 @@
 package com.sheng.action;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 
@@ -41,18 +43,23 @@ public class LoginAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		int i=0;
+		List<Integer> ls=new ArrayList<Integer>();
+		int i=0;//用户权限
+		int j=0;//员工状态
 		try{
 			dao=(CheckuserexistDAO) Class.forName(DaoconfigReader.getInstance().getDp().getCheckuserexistdao()).newInstance();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		String forward="";
-		i=dao.getmanagement(userid);
+		ls=dao.getmanageexiststate(userid);
+		i=ls.get(0);
+		j=ls.get(1);
 		Map<String,Object> session=ActionContext.getContext().getSession();
 		if(dao.getuser(userid, passwd)){
 			session.put("username", userid);
 			session.put("management",i);
+			session.put("existstate",j);
 			String time=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
 			PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 			logger.info(userid+"在"+time+"登陆");
