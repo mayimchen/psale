@@ -22,7 +22,7 @@ public class LoginInterceptor extends AbstractInterceptor {
 		ActionContext ctx=arg0.getInvocationContext();
 		Map<String,Object> session=ctx.getSession();
 		try{
-			String username=(String) session.get("username");
+			String username=(String)session.get("username");
 			if(username==null&&username.length()==0){
 				ctx.put("tip","对不起，您还没有登陆，请登录后再进行操作！");
 				forward=Action.LOGIN;

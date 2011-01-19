@@ -24,7 +24,7 @@
 
 						<div align="center">
 
-							<font color="red">对不起,您貌似还没有登陆，请先登录再进行操作。</font>
+							<font color="red">哈哈，你的权限不够吧！用一个权限高的账户重新登录</font>
 							<a href="index.jsp">登陆</a>
 						</div>
 					</div>

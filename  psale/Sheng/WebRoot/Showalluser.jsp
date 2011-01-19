@@ -150,19 +150,19 @@
 						</td>
 						<td>
 							<select name="management" id="management">
-								<option value="0">
+								<option value="1">
 									读权限
 								</option>
-								<option value="1">
+								<option value="2">
 									读写权限
 								</option>
-								<option value="2">
+								<option value="3">
 									读写改权限
 								</option>
-								<option value="3">
+								<option value="4">
 									读写改删权限
 								</option>
-								<option value="4">
+								<option value="5">
 									admin
 								</option>
 							</select>

@@ -85,4 +85,40 @@ public class CheckuserexistDaoImpl implements CheckuserexistDAO {
 		}
 		return forward;
 	}
+	/*
+	 * 得到指定人员的权限
+	 * **/
+	public int getmanagement(String userid) {
+		// TODO Auto-generated method stub
+		int i=0;
+		Jdbcutil jdbc=new Jdbcutil();
+		Connection conn=null;
+		PreparedStatement pm=null;
+		ResultSet rs=null;
+		try{
+			conn=jdbc.getConnection();
+			pm=conn.prepareStatement("select management from user where userid=?");
+			pm.setString(1,userid);
+			rs=pm.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					i=rs.getInt(1);
+				}
+			}
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}catch(Exception e){
+			e.printStackTrace();
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}finally{
+			jdbc.close(rs);
+			jdbc.close(pm);
+			jdbc.close(conn);
+		}
+		return i;
+	}
+	
 }

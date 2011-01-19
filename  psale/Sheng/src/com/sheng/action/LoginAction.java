@@ -2,6 +2,7 @@ package com.sheng.action;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 
 import org.apache.log4j.Logger;
@@ -40,14 +41,18 @@ public class LoginAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		int i=0;
 		try{
 			dao=(CheckuserexistDAO) Class.forName(DaoconfigReader.getInstance().getDp().getCheckuserexistdao()).newInstance();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		String forward="";
+		i=dao.getmanagement(userid);
+		Map<String,Object> session=ActionContext.getContext().getSession();
 		if(dao.getuser(userid, passwd)){
-			ActionContext.getContext().getSession().put("username", userid);
+			session.put("username", userid);
+			session.put("management",i);
 			String time=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
 			PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 			logger.info(userid+"ÔÚ"+time+"µÇÂ½");
