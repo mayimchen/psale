@@ -4,6 +4,26 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+	<!-- 定义全局配置信息 -->
+	<package name="Common" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="checklogin"
+				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="checkexiststate"
+				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="checklogin"></interceptor-ref>
+				<interceptor-ref name="checkexiststate"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="login">tip.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="none">none.jsp</result>
+		</global-results>
+	</package>
+
 	<!-- 此处为了ajax应用设置的action -->
 	<package name="Sale" namespace="/" extends="json-default">
 		<action name="Checkuseraction" class="com.sheng.action.CheckuserAction">
@@ -63,29 +83,17 @@
 	<!--按照权限来部署action-->
 
 	<!--权限1    代表只有查看库存权利，查看销售人员销售汇总-->
-	<package name="one" namespace="/" extends="struts-default">
+	<package name="one" namespace="/" extends="Common">
 		<!--权限检查  -->
 		<interceptors>
-			<interceptor name="checklogin"
-				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
-			<interceptor name="checkexiststate"
-				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checkone"
 				class="com.sheng.interceptor.ReadonlyInterceptor"></interceptor>
-			<interceptor-stack name="mydefault">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="checklogin"></interceptor-ref>
-				<interceptor-ref name="checkexiststate"></interceptor-ref>
+			<interceptor-stack name="myinterceptor">
+				<interceptor-ref name="mydefault"></interceptor-ref>
 				<interceptor-ref name="checkone"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
-		<global-results>
-			<result name="login">tip.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="none">none.jsp</result>
-		</global-results>
-
+		<default-interceptor-ref name="myinterceptor"></default-interceptor-ref>
 		<!--查看库存-->
 		<action name="lookwuliaoaction" class="com.sheng.action.LookkucunAction">
 			<result name="success">showallwuliao.jsp</result>
@@ -102,30 +110,18 @@
 	</package>
 
 	<!--权限2    代表可以查看并且可以出库-->
-	<package name="two" namespace="/" extends="struts-default">
+	<package name="two" namespace="/" extends="Common">
 
 		<!--权限检查  -->
 		<interceptors>
-			<interceptor name="checklogin"
-				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
-			<interceptor name="checkexiststate"
-				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checktwo"
 				class="com.sheng.interceptor.ReadoutInterceptor"></interceptor>
-			<interceptor-stack name="mydefault">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="checklogin"></interceptor-ref>
-				<interceptor-ref name="checkexiststate"></interceptor-ref>
+			<interceptor-stack name="myinterceptor">
+				<interceptor-ref name="mydefault"></interceptor-ref>
 				<interceptor-ref name="checktwo"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
-		<global-results>
-			<result name="login">tip.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="none">none.jsp</result>
-		</global-results>
-
+		<default-interceptor-ref name="myinterceptor"></default-interceptor-ref>
 		<!--出库action  -->
 		<action name="delwuliaoaction" class="com.sheng.action.DelwuliaoAction">
 			<result name="success">delwuliaook.jsp</result>
@@ -135,30 +131,18 @@
 	</package>
 
 	<!--权限3    代表可以查看所有信息，出库，入库-->
-	<package name="three" namespace="/" extends="struts-default">
+	<package name="three" namespace="/" extends="Common">
 
 		<!--权限检查  -->
 		<interceptors>
-			<interceptor name="checklogin"
-				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
-			<interceptor name="checkexiststate"
-				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checkthree"
 				class="com.sheng.interceptor.ReadoutinInterceptor"></interceptor>
-			<interceptor-stack name="mydefault">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="checklogin"></interceptor-ref>
-				<interceptor-ref name="checkexiststate"></interceptor-ref>
+			<interceptor-stack name="myinterceptor">
+				<interceptor-ref name="mydefault"></interceptor-ref>
 				<interceptor-ref name="checkthree"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
-		<global-results>
-			<result name="login">tip.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="none">none.jsp</result>
-		</global-results>
-
+		<default-interceptor-ref name="myinterceptor"></default-interceptor-ref>
 		<!--添加物料action -->
 		<action name="addwuliaoaction" class="com.sheng.action.AddwuliaoAction">
 			<result name="success">addwuliaook.jsp</result>
@@ -180,30 +164,18 @@
 	</package>
 
 	<!--权限4    拥有查看，出库，入库，添加工作人员-->
-	<package name="four" namespace="/" extends="struts-default">
+	<package name="four" namespace="/" extends="Common">
 
 		<!--权限检查  -->
 		<interceptors>
-			<interceptor name="checklogin"
-				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
-			<interceptor name="checkexiststate"
-				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checkfour"
 				class="com.sheng.interceptor.ReadoutinaddInterceptor"></interceptor>
-			<interceptor-stack name="mydefault">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="checklogin"></interceptor-ref>
-				<interceptor-ref name="checkexiststate"></interceptor-ref>
+			<interceptor-stack name="myinterceptor">
+				<interceptor-ref name="mydefault"></interceptor-ref>
 				<interceptor-ref name="checkfour"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
-		<global-results>
-			<result name="login">tip.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="none">none.jsp</result>
-		</global-results>
-
+		<default-interceptor-ref name="myinterceptor"></default-interceptor-ref>
 		<!-- 增加新用户的action -->
 		<action name="adduseraction" class="com.sheng.action.AdduserAction">
 			<result name="success">addsuccess.jsp</result>
@@ -213,30 +185,18 @@
 	</package>
 
 	<!--权限5    管理员权限-->
-	<package name="five" namespace="/" extends="struts-default">
+	<package name="five" namespace="/" extends="Common">
 
 		<!--权限检查  -->
 		<interceptors>
-			<interceptor name="checklogin"
-				class="com.sheng.interceptor.LoginInterceptor"></interceptor>
-			<interceptor name="checkexiststate"
-				class="com.sheng.interceptor.CheckuserexistInterceptor"></interceptor>
 			<interceptor name="checkadmin"
 				class="com.sheng.interceptor.AdminInterceptor"></interceptor>
-			<interceptor-stack name="mydefault">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="checklogin"></interceptor-ref>
-				<interceptor-ref name="checkexiststate"></interceptor-ref>
+			<interceptor-stack name="myinterceptor">
+				<interceptor-ref name="mydefault"></interceptor-ref>
 				<interceptor-ref name="checkadmin"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
-		<global-results>
-			<result name="login">tip.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="none">none.jsp</result>
-		</global-results>
-
+		<default-interceptor-ref name="myinterceptor"></default-interceptor-ref>
 		<!--人员管理  -->
 		<action name="lookalluseraction" class="com.sheng.action.ManageUserAction">
 			<result name="success">Showalluser.jsp</result>
