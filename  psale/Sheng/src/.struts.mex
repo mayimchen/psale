@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="Common" location="2576,220" size="170,70" />
+  <package name="Sale" location="10,1409" size="665,494">
+    <action name="Checkuseraction" location="15,23" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="Checkaduseraction" location="260,23" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="Checkoutnameaction" location="505,23" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="edituseraction" location="15,163" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="modifyaction" location="260,163" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="editproductaction" location="505,163" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="modifyproductaction" location="15,303" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="checkpidexistaction" location="260,303" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="getpnameaction" location="505,303" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="Logoutaction" location="15,443" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="saveandbackaction" location="260,443" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <package name="Login" location="785,1410" size="225,119">
+    <action name="loginaction" location="65,47" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index2.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="index.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="one" location="666,290" size="995,164">
+    <action name="lookwuliaoaction" location="835,82" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="showallwuliao.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="mainmenu.jsp" />
+      </result>
+    </action>
+    <action name="lookpersonaction" location="65,71" size="150,83">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="lookpersonok.jsp" />
+      </result>
+      <result name="nomessage">
+        <resourceEdge source="nomessage" routing="0" target="nopersonmessage.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="500.htm" />
+      </result>
+    </action>
+  </package>
+  <package name="two" location="2801,185" size="225,119">
+    <action name="delwuliaoaction" location="65,47" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="delwuliaook.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="delwuliao.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="three" location="1926,850" size="470,224">
+    <action name="addwuliaoaction" location="310,152" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="addwuliaook.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="addwuliao.jsp" />
+      </result>
+    </action>
+    <action name="lookoutaction" location="65,152" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="showalloutwuliao.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="mainmenu.jsp" />
+      </result>
+    </action>
+    <action name="lookallwuliaobf" location="65,47" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="showallwuliaobf.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="500.htm" />
+      </result>
+    </action>
+  </package>
+  <package name="four" location="2521,10" size="225,119">
+    <action name="adduseraction" location="65,47" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="addsuccess.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="adduser.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="five" location="176,745" size="470,119">
+    <action name="lookalluseraction" location="65,47" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="Showalluser.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="500.htm" />
+      </result>
+    </action>
+    <action name="lookallproducts" location="310,47" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="managewuliao.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="500.htm" />
+      </result>
+    </action>
+  </package>
+  <package name="report" location="666,920" size="715,224">
+    <action name="excel" location="555,47" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="500.htm" />
+      </result>
+    </action>
+    <action name="kucunpdf" location="555,152" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="500.htm" />
+      </result>
+    </action>
+    <action name="delpdf" location="310,152" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="500.htm" />
+      </result>
+    </action>
+    <action name="rukubfpdf" location="65,152" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="500.htm" />
+      </result>
+    </action>
+  </package>
+  <webResource name="index2.jsp" path="index2.jsp" location="875,1605" size="150,55" />
+  <webResource name="index.jsp" path="index.jsp" location="1120,1430" size="150,55" />
+  <webResource name="showallwuliao.jsp" path="showallwuliao.jsp" location="1754,345" size="150,55" />
+  <webResource name="mainmenu.jsp" path="mainmenu.jsp" location="1524,975" size="150,55" />
+  <webResource name="lookpersonok.jsp" path="lookpersonok.jsp" location="742,135" size="150,55" />
+  <webResource name="nopersonmessage.jsp" path="nopersonmessage.jsp" location="453,345" size="150,55" />
+  <webResource name="500.htm" path="500.htm" location="756,765" size="150,55" />
+  <webResource name="delwuliaook.jsp" path="delwuliaook.jsp" location="2880,380" size="150,55" />
+  <webResource name="delwuliao.jsp" path="delwuliao.jsp" location="3131,205" size="150,55" />
+  <webResource name="addwuliaook.jsp" path="addwuliaook.jsp" location="2250,1150" size="150,55" />
+  <webResource name="addwuliao.jsp" path="addwuliao.jsp" location="2501,975" size="150,55" />
+  <webResource name="showalloutwuliao.jsp" path="showalloutwuliao.jsp" location="1990,1150" size="150,55" />
+  <webResource name="showallwuliaobf.jsp" path="showallwuliaobf.jsp" location="1713,870" size="150,55" />
+  <webResource name="addsuccess.jsp" path="addsuccess.jsp" location="2848,30" size="150,55" />
+  <webResource name="adduser.jsp" path="adduser.jsp" location="2366,30" size="150,55" />
+  <webResource name="Showalluser.jsp" path="Showalluser.jsp" location="10,765" size="150,55" />
+  <webResource name="managewuliao.jsp" path="managewuliao.jsp" location="497,590" size="150,55" />
+</Struts2Diagram>
+

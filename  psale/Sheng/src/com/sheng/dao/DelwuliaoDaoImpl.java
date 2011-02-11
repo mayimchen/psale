@@ -6,19 +6,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sheng.datasource.Pool;
 import com.sheng.po.Outwuliao;
-import com.sheng.util.Jdbcutil;
+
 public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 
 	public boolean checkwuliaonameexist(String pid) {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		boolean flag=false;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from addwuliao where pid=?");
 			pm.setString(1,pid);
 			rs=pm.executeQuery();
@@ -29,19 +29,19 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			}else{
 				flag=false;
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			flag=false;
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return flag;
 	}
@@ -50,13 +50,12 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	 * **/
 	public int getnum(String pid) {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		int a=0;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select innum from addwuliao where pid=?");
 			pm.setString(1, pid);
 			rs=pm.executeQuery();
@@ -65,18 +64,18 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 					a=rs.getInt("innum");
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return a;
 	}
@@ -85,12 +84,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	 * **/
 	public boolean savedel(Outwuliao ow) {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		boolean flag=false;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("insert into delwuliao(pid,outname,outnum,outprice,outuserid,outdate,maori,sumsales,summaori,purchaser)values(?,?,?,?,?,?,?,?,?,?)");
 			pm.setString(1,ow.getPid());						
@@ -105,8 +103,8 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			pm.setString(10, ow.getPurchaser());
 			flag=pm.execute();
 			conn.commit();
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			try {
@@ -114,11 +112,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return flag;
 	}
@@ -128,11 +126,10 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	public boolean updatenum(int num,String pid) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("update addwuliao set innum=? where pid=?");
 			pm.setInt(1, num);
@@ -144,8 +141,8 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 				flag=true;
 			}
 			conn.commit();
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			flag=false;
@@ -154,11 +151,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return flag;
 	}
@@ -168,11 +165,10 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	public boolean delwuliao(String pid) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("delete from addwuliao where pid=?");
 			pm.setString(1, pid);
@@ -183,8 +179,8 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 				flag=true;
 			}
 			conn.commit();
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			flag=false;
@@ -193,11 +189,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return flag;
 	}
@@ -207,12 +203,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	public List<Outwuliao> findallout() {
 		// TODO Auto-generated method stub
 		List<Outwuliao> ls=new ArrayList<Outwuliao>();
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from delwuliao");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -221,18 +216,18 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 					ls.add(ow);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return ls;
 	}
@@ -242,12 +237,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	public String getpname(String pid) {
 		// TODO Auto-generated method stub
 		String message="";
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select inname from addwuliao where pid=?");
 			pm.setString(1,pid);
 			rs=pm.executeQuery();
@@ -256,18 +250,18 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 					message=rs.getString("inname");
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return message;
 	}
@@ -277,12 +271,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	public double getprice(String pid) {
 		// TODO Auto-generated method stub
 		double price=0.0;
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select inprice from addwuliao where pid=?");
 			pm.setString(1,pid);
 			rs=pm.executeQuery();
@@ -291,18 +284,18 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 					price=rs.getDouble("inprice");
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return price;
 	}
@@ -313,12 +306,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	public List<Outwuliao> findalloutbypage(int pageSize, int pageNo) {
 		// TODO Auto-generated method stub
 		List<Outwuliao> ls=new ArrayList<Outwuliao>();
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from delwuliao limit "+(pageSize*pageNo-pageSize)+","+pageSize+"");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -327,18 +319,18 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 					ls.add(ow);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return ls;
 	}
@@ -366,12 +358,11 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	public List<Integer> gettotalpage(int pageSize) {
 		// TODO Auto-generated method stub
 		List<Integer> num=new ArrayList<Integer>();
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select count(*) from delwuliao");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -380,18 +371,18 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 					num.add(rs.getInt(1)%pageSize);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return num;
 	}
@@ -402,14 +393,13 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 	public List<Double> getsumsm() {
 		// TODO Auto-generated method stub
 		List<Double> ls=new ArrayList<Double>();
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm1=null;
 		PreparedStatement pm2=null;
 		ResultSet rs1=null;
 		ResultSet rs2=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm1=conn.prepareStatement("select sum(outprice) from delwuliao");
 			pm2=conn.prepareStatement("select sum(maori) from delwuliao");
 			rs1=pm1.executeQuery();
@@ -420,24 +410,24 @@ public class DelwuliaoDaoImpl implements DelwuliaoDAO {
 					ls.add(rs2.getDouble(1));
 				}
 			}
-			jdbc.close(rs1);
-			jdbc.close(rs2);
-			jdbc.close(pm1);
-			jdbc.close(pm2);
-			jdbc.close(conn);
+			Pool.close(rs1);
+			Pool.close(rs2);
+			Pool.close(pm1);
+			Pool.close(pm2);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs1);
-			jdbc.close(rs2);
-			jdbc.close(pm1);
-			jdbc.close(pm2);
-			jdbc.close(conn);
+			Pool.close(rs1);
+			Pool.close(rs2);
+			Pool.close(pm1);
+			Pool.close(pm2);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs1);
-			jdbc.close(rs2);
-			jdbc.close(pm1);
-			jdbc.close(pm2);
-			jdbc.close(conn);
+			Pool.close(rs1);
+			Pool.close(rs2);
+			Pool.close(pm1);
+			Pool.close(pm2);
+			Pool.close(conn);
 		}
 		return ls;
 	}	

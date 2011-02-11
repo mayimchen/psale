@@ -7,6 +7,8 @@ mysql5.1.51
 
 加过权限控制，所以先在数据库里加条管理员记录,具体权限可以参照version0.2.txt中的文档介绍
 
+先建立一个数据库:sale
+
 insert user(userid,username,passwd,existstate,management)values('888888','测试人员','123456',0,5);
 
 

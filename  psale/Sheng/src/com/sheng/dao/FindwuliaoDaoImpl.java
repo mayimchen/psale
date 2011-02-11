@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sheng.datasource.Pool;
 import com.sheng.po.Addwuliao;
-import com.sheng.util.Jdbcutil;
+
 
 public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 	/*
@@ -16,31 +17,30 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 	 * **/
 	public List<Addwuliao> findalladd() {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		List<Addwuliao> list=new ArrayList<Addwuliao>();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from addwuliao");
 			rs=pm.executeQuery();
 			while(rs.next()){
 				Addwuliao a = setproperty(rs);
 				list.add(a);
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return list;
 	}
@@ -65,12 +65,11 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 	public Addwuliao getwuliaobyid(String pid) {
 		// TODO Auto-generated method stub
 		Addwuliao aw=null;
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from addwuliao where pid=?");
 			pm.setString(1,pid);
 			rs=pm.executeQuery();
@@ -86,18 +85,18 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 					aw.setProductsdetail(rs.getString("productsdetail"));
 				}	
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return aw;
 	}
@@ -107,13 +106,12 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 
 	public List<Addwuliao> findalladdbf() {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		List<Addwuliao> list=new ArrayList<Addwuliao>();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from addwuliaobeifen");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -122,18 +120,18 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 					list.add(a);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return list;
 	}
@@ -143,31 +141,30 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 	 * **/
 	public List<Addwuliao> findaddbfbypage(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		List<Addwuliao> list=new ArrayList<Addwuliao>();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from addwuliaobeifen limit "+(pageNo*pageSize-pageSize)+","+pageSize+"");
 			rs=pm.executeQuery();
 			while(rs.next()){
 				Addwuliao a = setproperty(rs);
 				list.add(a);
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return list;
 	}
@@ -178,12 +175,11 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 	public List<Integer> gettotalpage(int pageSize) {
 		// TODO Auto-generated method stub
 		List<Integer> ls=new ArrayList<Integer>();
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select count(*) from addwuliaobeifen");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -192,18 +188,18 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 					ls.add(rs.getInt(1)%pageSize);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return ls;
 	}
@@ -212,13 +208,12 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 	 * **/
 	public List<Addwuliao> getaddbypage(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		List<Addwuliao> list=new ArrayList<Addwuliao>();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from addwuliao limit "+(pageNo*pageSize-pageSize)+","+pageSize+"");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -227,18 +222,18 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 					list.add(a);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return list;
 	}
@@ -247,13 +242,12 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 	 **/
 	public List<Integer> getaddpage(int pageSize) {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		List<Integer> list=new ArrayList<Integer>();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select count(*) from addwuliao");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -262,18 +256,18 @@ public class FindwuliaoDaoImpl implements FindwuliaoDAO {
 					list.add(rs.getInt(1)%pageSize);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return list;
 	}

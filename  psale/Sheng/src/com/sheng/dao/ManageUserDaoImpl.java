@@ -7,20 +7,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sheng.datasource.Pool;
 import com.sheng.po.User;
-import com.sheng.util.Jdbcutil;
+
 
 public class ManageUserDaoImpl implements ManageUserDAO {
 
 	public List<User> getalluser() {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		List<User> ls=new ArrayList<User>();
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from user");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -29,19 +29,19 @@ public class ManageUserDaoImpl implements ManageUserDAO {
 					ls.add(u);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 			
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return ls;
 	}
@@ -51,13 +51,12 @@ public class ManageUserDaoImpl implements ManageUserDAO {
 	 * **/
 	public List<User> getalluserbypage(int pageNo,int pageSize) {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		List<User> ls=new ArrayList<User>();
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from user limit "+(pageNo*pageSize-pageSize)+","+pageSize+"");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -66,19 +65,19 @@ public class ManageUserDaoImpl implements ManageUserDAO {
 					ls.add(u);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 			
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return ls;
 	}
@@ -99,12 +98,11 @@ public class ManageUserDaoImpl implements ManageUserDAO {
 	public List<Integer> gettotalpage(int pageSize) {
 		// TODO Auto-generated method stub
 		List<Integer> list=new ArrayList<Integer>();
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select count(*) from user");
 			rs=pm.executeQuery();
 			if(rs!=null){
@@ -113,18 +111,18 @@ public class ManageUserDaoImpl implements ManageUserDAO {
 					list.add(rs.getInt(1)%pageSize);
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return list;
 	}

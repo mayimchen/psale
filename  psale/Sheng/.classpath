@@ -21,11 +21,13 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/iTextAsian.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/iText-2.1.7.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-collections-3.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-digester-2.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/groovy-1.7.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/asm-3.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/iTextAsianCmaps.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-pool-1.5.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-dbcp-1.4.jar" sourcepath="C:/Documents and Settings/Administrator/My Documents/Downloads/dbcp/commons-dbcp-1.4/commons-dbcp-1.4-sources.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

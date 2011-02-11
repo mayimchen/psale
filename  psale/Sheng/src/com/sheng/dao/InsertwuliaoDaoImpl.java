@@ -3,21 +3,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.sheng.datasource.Pool;
 import com.sheng.po.Addwuliao;
-import com.sheng.util.Jdbcutil;
+
+
 /*
  * ÃÌº”ŒÔ¡œ
  * **/
 public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 	public boolean addwuliao(Addwuliao aw) {
 		// TODO Auto-generated method stub
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		PreparedStatement pm2=null;
 		boolean flag=false;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("insert addwuliao(pid,inname,innum,inprice,inuserid,indate,productsdetail)values(?,?,?,?,?,?,?)");
 			pm2=conn.prepareStatement("insert addwuliaobeifen(pid,inname,innum,inprice,inuserid,indate,productsdetail)values(?,?,?,?,?,?,?)");
@@ -40,8 +41,8 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 			pm2.execute();
 			conn.commit();
 			flag=true;
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			flag=false;
@@ -50,11 +51,11 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 			}catch(Exception ep){
 				ep.printStackTrace();
 			}
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return flag;
 	}
@@ -62,11 +63,10 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 	public int updatewuliao(Addwuliao aw) {
 		// TODO Auto-generated method stub
 		int flag=0;
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			conn.setAutoCommit(false);
 			pm=conn.prepareStatement("update addwuliao set inname=?,innum=?,inprice=?,productsdetail=?where pid=?");
 			pm.setString(1,aw.getInname());
@@ -76,8 +76,8 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 			pm.setString(5,aw.getPid());
 			flag=pm.executeUpdate();
 			conn.commit();
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
 			try{
@@ -85,11 +85,11 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 			}catch(Exception ep){
 				ep.printStackTrace();
 			}
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return flag;
 	}
@@ -97,12 +97,11 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 	public int findpid(String id) {
 		// TODO Auto-generated method stub
 		int i=1;
-		Jdbcutil jdbc=new Jdbcutil();
 		Connection conn=null;
 		PreparedStatement pm=null;
 		ResultSet rs=null;
 		try{
-			conn=jdbc.getConnection();
+			conn=Pool.getConnection();
 			pm=conn.prepareStatement("select * from addwuliao where pid=?");
 			pm.setString(1,id);
 			rs=pm.executeQuery();
@@ -111,18 +110,18 @@ public class InsertwuliaoDaoImpl implements InsertwuliaoDAO {
 					i=0;
 				}
 			}
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}catch(Exception e){
 			e.printStackTrace();
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}finally{
-			jdbc.close(rs);
-			jdbc.close(pm);
-			jdbc.close(conn);
+			Pool.close(rs);
+			Pool.close(pm);
+			Pool.close(conn);
 		}
 		return i;
 	}

@@ -14,7 +14,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 /*
  * the class is a util class
- * 
+ * @param 数据库连接工具类
  * **/
 public class Jdbcutil {
 	Logger logger=Logger.getLogger(Jdbcutil.class);

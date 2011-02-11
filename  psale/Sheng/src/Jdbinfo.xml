@@ -4,4 +4,8 @@
 	<url>jdbc:mysql://localhost:3306/sale</url>
 	<username>root</username>
 	<passwd></passwd>
+	<maxinit>10</maxinit>
+	<maxactive>30</maxactive>
+	<maxidle>20</maxidle>
+	<maxwait>500000</maxwait>
 </config>
